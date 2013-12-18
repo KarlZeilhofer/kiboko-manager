@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<competition>
+    <creationDate>2013-07-03T18:13</creationDate>
+    <creationHost>ZEITNEHMUNG2</creationHost>
+    <description>Bewerbsvorlage mit 5 Zillen, 3 Ersatzzillen, den Farben rot blau und grün
+Datum: 03.07.2013
+Uhrzeit: 18:12:30</description>
+    <boatsPerRound>5</boatsPerRound>
+    <colors>rot blau grün</colors>
+    <databaseHostName></databaseHostName>
+    <databaseName>kein</databaseName>
+    <runs>
+        <run ID="1">
+            <round>1</round>
+            <boatID>1</boatID>
+            <color>rot</color>
+            <title1>BI</title1>
+            <firstName1>Max</firstName1>
+            <lastName1>Mustermann</lastName1>
+            <title2></title2>
+            <firstName2></firstName2>
+            <lastName2></lastName2>
+            <startTimeID>1</startTimeID>
+            <goalTimeID>3</goalTimeID>
+            <dsq>true</dsq>
+            <errors>2,4,15</errors>
+            <published>true</published>
+            <notes></notes>
+            <fireBrigade>Linz Land</fireBrigade>
+            <valuationClass>Gold</valuationClass>
+        </run>
+        <run ID="2">
+            <round>1</round>
+            <boatID>2</boatID>
+            <color>rot</color>
+            <title1>HBI</title1>
+            <firstName1>Heinrich</firstName1>
+            <lastName1>der Löwe</lastName1>
+            <title2></title2>
+            <firstName2></firstName2>
+            <lastName2></lastName2>
+            <startTimeID>5</startTimeID>
+            <goalTimeID>6</goalTimeID>
+            <dsq>false</dsq>
+            <errors>5</errors>
+            <published>true</published>
+            <notes>untergegangen</notes>
+            <fireBrigade>Braunschweig</fireBrigade>
+            <valuationClass>Einer</valuationClass>
+        </run>
+        <run ID="3">
+            <round>1</round>
+            <boatID>3</boatID>
+            <color>rot</color>
+            <title1>LM</title1>
+            <firstName1>Basti</firstName1>
+            <lastName1>Backes</lastName1>
+            <title2></title2>
+            <firstName2></firstName2>
+            <lastName2></lastName2>
+            <startTimeID>2</startTimeID>
+            <goalTimeID>4</goalTimeID>
+            <dsq>false</dsq>
+            <errors>1</errors>
+            <published>true</published>
+            <notes></notes>
+            <fireBrigade>Buxdihude</fireBrigade>
+            <valuationClass>Silber</valuationClass>
+        </run>
+        <run ID="4">
+            <round>1</round>
+            <boatID>4</boatID>
+            <color>rot</color>
+            <title1></title1>
+            <firstName1></firstName1>
+            <lastName1></lastName1>
+            <title2></title2>
+            <firstName2></firstName2>
+            <lastName2></lastName2>
+            <startTimeID>7</startTimeID>
+            <goalTimeID>8</goalTimeID>
+            <dsq>false</dsq>
+            <errors></errors>
+            <published>false</published>
+            <notes>Testrunde</notes>
+            <fireBrigade></fireBrigade>
+            <valuationClass></valuationClass>
+        </run>
+        <run ID="5">
+            <round>1</round>
+            <boatID>5</boatID>
+            <color>rot</color>
+            <title1></title1>
+            <firstName1></firstName1>
+            <lastName1></lastName1>
+            <title2></title2>
+            <firstName2></firstName2>
+            <lastName2></lastName2>
+            <startTimeID>0</startTimeID>
+            <goalTimeID>0</goalTimeID>
+            <dsq>false</dsq>
+            <errors></errors>
+            <published>false</published>
+            <notes></notes>
+            <fireBrigade></fireBrigade>
+            <valuationClass></valuationClass>
+        </run>
+        <run ID="6">
+            <round>2</round>
+            <boatID>1</boatID>
+            <color>blau</color>
+            <title1></title1>
+            <firstName1></firstName1>
+            <lastName1></lastName1>
+            <title2></title2>
+            <firstName2></firstName2>
+            <lastName2></lastName2>
+            <startTimeID>0</startTimeID>
+            <goalTimeID>0</goalTimeID>
+            <dsq>false</dsq>
+            <errors></errors>
+            <published>false</published>
+            <notes></notes>
+            <fireBrigade></fireBrigade>
+            <valuationClass></valuationClass>
+        </run>
+        <run ID="7">
+            <round>2</round>
+            <boatID>2</boatID>
+            <color>blau</color>
+            <title1></title1>
+            <firstName1></firstName1>
+            <lastName1></lastName1>
+            <title2></title2>
+            <firstName2></firstName2>
+            <lastName2></lastName2>
+            <startTimeID>0</startTimeID>
+            <goalTimeID>0</goalTimeID>
+            <dsq>false</dsq>
+            <errors></errors>
+            <published>false</published>
+            <notes></notes>
+            <fireBrigade></fireBrigade>
+            <valuationClass></valuationClass>
+        </run>
+        <run ID="8">
+            <round>2</round>
+            <boatID>3</boatID>
+            <color>blau</color>
+            <title1></title1>
+            <firstName1></firstName1>
+            <lastName1></lastName1>
+            <title2></title2>
+            <firstName2></firstName2>
+            <lastName2></lastName2>
+            <startTimeID>0</startTimeID>
+            <goalTimeID>0</goalTimeID>
+            <dsq>false</dsq>
+            <errors></errors>
+            <published>false</published>
+            <notes></notes>
+            <fireBrigade></fireBrigade>
+            <valuationClass></valuationClass>
+        </run>
+        <run ID="9">
+            <round>2</round>
+            <boatID>4</boatID>
+            <color>blau</color>
+            <title1></title1>
+            <firstName1></firstName1>
+            <lastName1></lastName1>
+            <title2></title2>
+            <firstName2></firstName2>
+            <lastName2></lastName2>
+            <startTimeID>0</startTimeID>
+            <goalTimeID>0</goalTimeID>
+            <dsq>false</dsq>
+            <errors></errors>
+            <published>false</published>
+            <notes></notes>
+            <fireBrigade></fireBrigade>
+            <valuationClass></valuationClass>
+        </run>
+        <run ID="10">
+            <round>2</round>
+            <boatID>5</boatID>
+            <color>blau</color>
+            <title1></title1>
+            <firstName1></firstName1>
+            <lastName1></lastName1>
+            <title2></title2>
+            <firstName2></firstName2>
+            <lastName2></lastName2>
+            <startTimeID>0</startTimeID>
+            <goalTimeID>0</goalTimeID>
+            <dsq>false</dsq>
+            <errors></errors>
+            <published>false</published>
+            <notes></notes>
+            <fireBrigade></fireBrigade>
+            <valuationClass></valuationClass>
+        </run>
+    </runs>
+    <timeStamps>
+        <timeStamp ID="1">
+            <time>18:13:42:350</time>
+            <source>E</source>
+            <runID>1</runID>
+            <boatboxID>0</boatboxID>
+            <boatID>0</boatID>
+            <boatName></boatName>
+        </timeStamp>
+        <timeStamp ID="2">
+            <time>18:13:52:250</time>
+            <source>E</source>
+            <runID>3</runID>
+            <boatboxID>0</boatboxID>
+            <boatID>0</boatID>
+            <boatName></boatName>
+        </timeStamp>
+        <timeStamp ID="3">
+            <time>18:14:32:590</time>
+            <source>E</source>
+            <runID>1</runID>
+            <boatboxID>0</boatboxID>
+            <boatID>0</boatID>
+            <boatName></boatName>
+        </timeStamp>
+        <timeStamp ID="4">
+            <time>18:14:35:430</time>
+            <source>E</source>
+            <runID>3</runID>
+            <boatboxID>0</boatboxID>
+            <boatID>0</boatID>
+            <boatName></boatName>
+        </timeStamp>
+        <timeStamp ID="5">
+            <time>18:15:51:340</time>
+            <source>E</source>
+            <runID>2</runID>
+            <boatboxID>0</boatboxID>
+            <boatID>0</boatID>
+            <boatName></boatName>
+        </timeStamp>
+        <timeStamp ID="6">
+            <time>18:15:56:490</time>
+            <source>E</source>
+            <runID>2</runID>
+            <boatboxID>0</boatboxID>
+            <boatID>0</boatID>
+            <boatName></boatName>
+        </timeStamp>
+        <timeStamp ID="7">
+            <time>18:19:36:080</time>
+            <source>E</source>
+            <runID>4</runID>
+            <boatboxID>0</boatboxID>
+            <boatID>0</boatID>
+            <boatName></boatName>
+        </timeStamp>
+        <timeStamp ID="8">
+            <time>18:19:54:600</time>
+            <source>E</source>
+            <runID>4</runID>
+            <boatboxID>0</boatboxID>
+            <boatID>0</boatID>
+            <boatName></boatName>
+        </timeStamp>
+        <timeStamp ID="9">
+            <time>18:21:17:030</time>
+            <source>M</source>
+            <runID>0</runID>
+            <boatboxID>0</boatboxID>
+            <boatID>0</boatID>
+            <boatName></boatName>
+        </timeStamp>
+        <timeStamp ID="10">
+            <time>18:21:29:241</time>
+            <source>M</source>
+            <runID>0</runID>
+            <boatboxID>0</boatboxID>
+            <boatID>0</boatID>
+            <boatName></boatName>
+        </timeStamp>
+        <timeStamp ID="11">
+            <time>18:25:36:346</time>
+            <source>M</source>
+            <runID>0</runID>
+            <boatboxID>0</boatboxID>
+            <boatID>0</boatID>
+            <boatName></boatName>
+        </timeStamp>
+        <timeStamp ID="12">
+            <time>18:25:37:593</time>
+            <source>M</source>
+            <runID>0</runID>
+            <boatboxID>0</boatboxID>
+            <boatID>0</boatID>
+            <boatName></boatName>
+        </timeStamp>
+        <timeStamp ID="13">
+            <time>18:25:48:439</time>
+            <source>M</source>
+            <runID>0</runID>
+            <boatboxID>0</boatboxID>
+            <boatID>0</boatID>
+            <boatName></boatName>
+        </timeStamp>
+    </timeStamps>
+    <boats>
+        <boat boatID="1">
+            <boatName></boatName>
+        </boat>
+        <boat boatID="2">
+            <boatName></boatName>
+        </boat>
+        <boat boatID="3">
+            <boatName></boatName>
+        </boat>
+        <boat boatID="4">
+            <boatName></boatName>
+        </boat>
+        <boat boatID="5">
+            <boatName></boatName>
+        </boat>
+    </boats>
+    <boatboxes>
+        <boatbox boatboxID="1">
+            <boatID>0</boatID>
+        </boatbox>
+        <boatbox boatboxID="2">
+            <boatID>0</boatID>
+        </boatbox>
+        <boatbox boatboxID="3">
+            <boatID>0</boatID>
+        </boatbox>
+        <boatbox boatboxID="4">
+            <boatID>0</boatID>
+        </boatbox>
+        <boatbox boatboxID="5">
+            <boatID>0</boatID>
+        </boatbox>
+        <boatbox boatboxID="6">
+            <boatID>0</boatID>
+        </boatbox>
+        <boatbox boatboxID="7">
+            <boatID>0</boatID>
+        </boatbox>
+        <boatbox boatboxID="8">
+            <boatID>0</boatID>
+        </boatbox>
+        <boatbox boatboxID="9">
+            <boatID>0</boatID>
+        </boatbox>
+        <boatbox boatboxID="10">
+            <boatID>0</boatID>
+        </boatbox>
+        <boatbox boatboxID="11">
+            <boatID>0</boatID>
+        </boatbox>
+        <boatbox boatboxID="12">
+            <boatID>0</boatID>
+        </boatbox>
+        <boatbox boatboxID="13">
+            <boatID>0</boatID>
+        </boatbox>
+        <boatbox boatboxID="14">
+            <boatID>0</boatID>
+        </boatbox>
+        <boatbox boatboxID="15">
+            <boatID>0</boatID>
+        </boatbox>
+        <boatbox boatboxID="16">
+            <boatID>0</boatID>
+        </boatbox>
+        <boatbox boatboxID="17">
+            <boatID>0</boatID>
+        </boatbox>
+        <boatbox boatboxID="18">
+            <boatID>0</boatID>
+        </boatbox>
+        <boatbox boatboxID="19">
+            <boatID>0</boatID>
+        </boatbox>
+        <boatbox boatboxID="20">
+            <boatID>0</boatID>
+        </boatbox>
+    </boatboxes>
+</competition>

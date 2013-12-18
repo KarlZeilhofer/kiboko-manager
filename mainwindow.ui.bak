@@ -1,0 +1,1115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1289</width>
+    <height>682</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>RFSW Studio</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTabWidget" name="tabWidget_main">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="documentMode">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="tab_timekeeping">
+       <attribute name="title">
+        <string>Zeitnehmung</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="1,0">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_7">
+          <item>
+           <widget class="MainTableWidget" name="tableWidget_main">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>1</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="alternatingRowColors">
+             <bool>false</bool>
+            </property>
+            <property name="selectionMode">
+             <enum>QAbstractItemView::SingleSelection</enum>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectRows</enum>
+            </property>
+            <attribute name="verticalHeaderVisible">
+             <bool>false</bool>
+            </attribute>
+            <row>
+             <property name="text">
+              <string>1</string>
+             </property>
+            </row>
+            <row>
+             <property name="text">
+              <string>2</string>
+             </property>
+            </row>
+            <row>
+             <property name="text">
+              <string>3</string>
+             </property>
+            </row>
+            <row>
+             <property name="text">
+              <string>4</string>
+             </property>
+            </row>
+            <row>
+             <property name="text">
+              <string>5</string>
+             </property>
+            </row>
+            <row>
+             <property name="text">
+              <string>6</string>
+             </property>
+            </row>
+            <row>
+             <property name="text">
+              <string>7</string>
+             </property>
+            </row>
+            <row>
+             <property name="text">
+              <string>8</string>
+             </property>
+            </row>
+            <row>
+             <property name="text">
+              <string>9</string>
+             </property>
+            </row>
+            <column>
+             <property name="text">
+              <string>BewNr</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Durchg</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Farbe</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Zille</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Name(n)</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Startzeit</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Laufzeit</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>DSQ</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Fehler</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>publ.</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Anmerkungen</string>
+             </property>
+            </column>
+            <item row="0" column="0">
+             <property name="text">
+              <string>321</string>
+             </property>
+            </item>
+            <item row="0" column="1">
+             <property name="text">
+              <string>17</string>
+             </property>
+            </item>
+            <item row="0" column="2">
+             <property name="text">
+              <string>blau</string>
+             </property>
+            </item>
+            <item row="0" column="3">
+             <property name="text">
+              <string>11</string>
+             </property>
+            </item>
+            <item row="0" column="4">
+             <property name="text">
+              <string>Hubert von Goisern, Reinhard Fendrich</string>
+             </property>
+            </item>
+            <item row="0" column="5">
+             <property name="text">
+              <string>13:39:57.34</string>
+             </property>
+            </item>
+            <item row="0" column="6">
+             <property name="text">
+              <string>9:10.36</string>
+             </property>
+            </item>
+            <item row="0" column="7">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checkState">
+              <enum>Unchecked</enum>
+             </property>
+            </item>
+            <item row="0" column="8">
+             <property name="text">
+              <string>1,2,3</string>
+             </property>
+            </item>
+            <item row="0" column="9">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="checkState">
+              <enum>Unchecked</enum>
+             </property>
+            </item>
+            <item row="0" column="10">
+             <property name="text">
+              <string>Murz a Gaudi</string>
+             </property>
+            </item>
+            <item row="1" column="0">
+             <property name="text">
+              <string>322</string>
+             </property>
+            </item>
+            <item row="1" column="1">
+             <property name="text">
+              <string>17</string>
+             </property>
+            </item>
+            <item row="1" column="2">
+             <property name="text">
+              <string>blau</string>
+             </property>
+            </item>
+            <item row="1" column="3">
+             <property name="text">
+              <string>12</string>
+             </property>
+            </item>
+            <item row="2" column="0">
+             <property name="text">
+              <string>323</string>
+             </property>
+            </item>
+            <item row="2" column="1">
+             <property name="text">
+              <string>17</string>
+             </property>
+            </item>
+            <item row="2" column="2">
+             <property name="text">
+              <string>blau</string>
+             </property>
+            </item>
+            <item row="2" column="3">
+             <property name="text">
+              <string>13</string>
+             </property>
+            </item>
+            <item row="3" column="0">
+             <property name="text">
+              <string>324</string>
+             </property>
+            </item>
+            <item row="3" column="1">
+             <property name="text">
+              <string>17</string>
+             </property>
+            </item>
+            <item row="3" column="2">
+             <property name="text">
+              <string>blau</string>
+             </property>
+            </item>
+            <item row="3" column="3">
+             <property name="text">
+              <string>14</string>
+             </property>
+            </item>
+            <item row="4" column="0">
+             <property name="text">
+              <string>325</string>
+             </property>
+            </item>
+            <item row="4" column="1">
+             <property name="text">
+              <string>17</string>
+             </property>
+            </item>
+            <item row="4" column="2">
+             <property name="text">
+              <string>blau</string>
+             </property>
+            </item>
+            <item row="4" column="3">
+             <property name="text">
+              <string>15</string>
+             </property>
+            </item>
+            <item row="5" column="0">
+             <property name="text">
+              <string>326</string>
+             </property>
+            </item>
+            <item row="5" column="1">
+             <property name="text">
+              <string>18</string>
+             </property>
+            </item>
+            <item row="5" column="2">
+             <property name="text">
+              <string>rot</string>
+             </property>
+            </item>
+            <item row="6" column="0">
+             <property name="text">
+              <string>327</string>
+             </property>
+            </item>
+            <item row="6" column="1">
+             <property name="text">
+              <string>18</string>
+             </property>
+            </item>
+            <item row="6" column="2">
+             <property name="text">
+              <string>rot</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="groupBox_notifications">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="title">
+             <string>Meldungen</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_5">
+             <item row="0" column="0">
+              <widget class="InfoScreen" name="infoscreen">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>100</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>12</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <item>
+                <property name="text">
+                 <string>Testnachricht: Fehler im System</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Neuer Teilnehmer</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="groupBox_2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>130</height>
+             </size>
+            </property>
+            <property name="title">
+             <string>Suche</string>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <item>
+              <widget class="QLineEdit" name="lineEdit_searchText">
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>0</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="comboBox_searchTask">
+               <item>
+                <property name="text">
+                 <string>Name</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Bewerbs-Nr.</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Durchgang</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Zille</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Farbe</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Anmerkungen</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_search">
+               <property name="text">
+                <string>Suchen</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <item>
+             <widget class="QLabel" name="label_7">
+              <property name="text">
+               <string>Zentrieren</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_centerNothing">
+              <property name="text">
+               <string>Gegenwart</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+              <property name="autoRepeat">
+               <bool>false</bool>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_centerStart">
+              <property name="text">
+               <string>Start</string>
+              </property>
+              <property name="checked">
+               <bool>false</bool>
+              </property>
+              <property name="autoRepeat">
+               <bool>false</bool>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioButton_centerGoal">
+              <property name="text">
+               <string>Ziel</string>
+              </property>
+              <property name="checked">
+               <bool>false</bool>
+              </property>
+              <property name="autoRepeat">
+               <bool>false</bool>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">buttonGroup</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_6">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="TimeLine" name="timeline" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_6" stretch="1,0">
+          <item>
+           <widget class="QGroupBox" name="groupBox_5">
+            <property name="title">
+             <string>Unzugeordnete Auslösungen:</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_5">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_3" stretch="1,0">
+                 <item>
+                  <widget class="QPushButton" name="pushButton_assignTime">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>50</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>&lt;&lt;&lt;</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="pushButton_disassignTime">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>50</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string>&gt;&gt;&gt;</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="TimeStampsTableWidget" name="tableWidget_timeStamps">
+                 <property name="rowCount">
+                  <number>5</number>
+                 </property>
+                 <property name="columnCount">
+                  <number>1</number>
+                 </property>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <column/>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_manualTrigger">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>manuelle Auslösung</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="groupBox_3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="title">
+             <string>Anzeigetafel</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_4">
+             <item>
+              <layout class="QGridLayout" name="gridLayout">
+               <item row="3" column="0" colspan="2">
+                <widget class="DisplayPreviewWidget" name="flipdotDisplayWidget_2" native="true">
+                 <property name="minimumSize">
+                  <size>
+                   <width>84</width>
+                   <height>28</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QPlainTextEdit" name="plainTextEdit_flipdotdisplay_2">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>1</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>55</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>64000</width>
+                   <height>55</height>
+                  </size>
+                 </property>
+                 <property name="plainText">
+                  <string>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, …</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0" colspan="2">
+                <widget class="DisplayPreviewWidget" name="flipdotDisplayWidget_1" native="true">
+                 <property name="minimumSize">
+                  <size>
+                   <width>84</width>
+                   <height>28</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QPlainTextEdit" name="plainTextEdit_flipdotdisplay_1">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>1</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>55</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>64000</width>
+                   <height>55</height>
+                  </size>
+                 </property>
+                 <property name="plainText">
+                  <string>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, …</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_7">
+               <item>
+                <widget class="QLabel" name="label_3">
+                 <property name="text">
+                  <string>Modus:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QRadioButton" name="radioButton_flipdotAutoMode">
+                 <property name="text">
+                  <string>automatisch</string>
+                 </property>
+                 <property name="checked">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QRadioButton" name="radioButton_flipdotManualMode">
+                 <property name="text">
+                  <string>manuell</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_5">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>83</width>
+                   <height>17</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_flipdotShow">
+                 <property name="text">
+                  <string>Anzeigen</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_rfConnections">
+       <attribute name="title">
+        <string>Funkverbindungen</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <widget class="QScrollArea" name="scrollArea_boxStates">
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents_2">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>86</width>
+             <height>16</height>
+            </rect>
+           </property>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_monitor">
+       <attribute name="title">
+        <string>Monitor</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="PublicWidget" name="widget_public" native="true"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1289</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuCompetition">
+    <property name="title">
+     <string>Bewerb</string>
+    </property>
+    <addaction name="actionCreateCompetition"/>
+    <addaction name="actionViewAndEdit"/>
+    <addaction name="actionSaveCompetition"/>
+    <addaction name="actionSaveAs"/>
+    <addaction name="separator"/>
+    <addaction name="actionCompetitionProperties"/>
+    <addaction name="actionExportCompetition"/>
+   </widget>
+   <widget class="QMenu" name="menuConnections">
+    <property name="title">
+     <string>System</string>
+    </property>
+    <addaction name="actionShowTimeBaseDialog"/>
+    <addaction name="actionShowDataBaseDialog"/>
+    <addaction name="actionFlipdotPixeltest"/>
+   </widget>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Einstellungen</string>
+    </property>
+    <addaction name="actionShowGeneralSettings"/>
+    <addaction name="actionShowDisplaySettings"/>
+    <addaction name="actionGlobalSoundOnOff"/>
+    <addaction name="actionShowColumnsSettings"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Hilfe</string>
+    </property>
+    <addaction name="actionOpenDocumentation"/>
+    <addaction name="actionCheatSheet"/>
+    <addaction name="actionAbout"/>
+    <addaction name="actionAboutQt"/>
+   </widget>
+   <widget class="QMenu" name="menuDebug">
+    <property name="title">
+     <string>Debug</string>
+    </property>
+    <addaction name="actionTimeStampGenerator"/>
+    <addaction name="actionViewTimeStampList"/>
+   </widget>
+   <addaction name="menuCompetition"/>
+   <addaction name="menuConnections"/>
+   <addaction name="menuSettings"/>
+   <addaction name="menuHelp"/>
+   <addaction name="menuDebug"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionCreateCompetition">
+   <property name="text">
+    <string>Erstellen</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::ApplicationShortcut</enum>
+   </property>
+  </action>
+  <action name="actionSaveCompetition">
+   <property name="text">
+    <string>Speichern</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::ApplicationShortcut</enum>
+   </property>
+  </action>
+  <action name="actionExportCompetition">
+   <property name="text">
+    <string>Exportieren</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::ApplicationShortcut</enum>
+   </property>
+  </action>
+  <action name="actionShowTimeBaseDialog">
+   <property name="text">
+    <string>Zeitbasis synchronisieren</string>
+   </property>
+  </action>
+  <action name="actionShowDataBaseDialog">
+   <property name="text">
+    <string>Datenbank Verbindung</string>
+   </property>
+  </action>
+  <action name="actionShowGeneralSettings">
+   <property name="text">
+    <string>Allgemeines</string>
+   </property>
+  </action>
+  <action name="actionOpenDocumentation">
+   <property name="text">
+    <string>Dokumentation</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>Über diese Software</string>
+   </property>
+  </action>
+  <action name="actionAboutQt">
+   <property name="text">
+    <string>Über Qt</string>
+   </property>
+  </action>
+  <action name="actionGlobalSoundOnOff">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Sound</string>
+   </property>
+  </action>
+  <action name="actionShowDisplaySettings">
+   <property name="text">
+    <string>Anzeigetafeln</string>
+   </property>
+  </action>
+  <action name="actionShowColumnsSettings">
+   <property name="text">
+    <string>Spalten</string>
+   </property>
+  </action>
+  <action name="actionTimeStampGenerator">
+   <property name="text">
+    <string>TimeStamp Generator</string>
+   </property>
+  </action>
+  <action name="actionViewTimeStampList">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>View TimeStamp List</string>
+   </property>
+  </action>
+  <action name="actionSaveAs">
+   <property name="text">
+    <string>Speichern Unter...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="actionViewAndEdit">
+   <property name="text">
+    <string>Betrachten/Editieren</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionCheatSheet">
+   <property name="text">
+    <string>Schummelzettel</string>
+   </property>
+   <property name="shortcut">
+    <string>?</string>
+   </property>
+  </action>
+  <action name="actionFlipdotPixeltest">
+   <property name="text">
+    <string>Anzeigetafeln Pixeltest</string>
+   </property>
+  </action>
+  <action name="actionCompetitionProperties">
+   <property name="text">
+    <string>Eigenschaften</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>DisplayPreviewWidget</class>
+   <extends>QWidget</extends>
+   <header>displaypreviewwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TimeStampsTableWidget</class>
+   <extends>QTableWidget</extends>
+   <header>timestampstablewidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>TimeLine</class>
+   <extends>QWidget</extends>
+   <header>timeline.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MainTableWidget</class>
+   <extends>QTableWidget</extends>
+   <header>maintablewidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>InfoScreen</class>
+   <extends>QListWidget</extends>
+   <header>infoscreen.h</header>
+  </customwidget>
+  <customwidget>
+   <class>PublicWidget</class>
+   <extends>QWidget</extends>
+   <header>publicwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>radioButton_flipdotManualMode</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>plainTextEdit_flipdotdisplay_1</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1036</x>
+     <y>430</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1037</x>
+     <y>477</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_flipdotManualMode</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>plainTextEdit_flipdotdisplay_2</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1065</x>
+     <y>431</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1063</x>
+     <y>584</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioButton_flipdotManualMode</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>pushButton_flipdotShow</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1076</x>
+     <y>429</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1200</x>
+     <y>430</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <buttongroups>
+  <buttongroup name="buttonGroup"/>
+ </buttongroups>
+</ui>

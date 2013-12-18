@@ -1,0 +1,1414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://fdisk.at/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://fdisk.at/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"> -
+<wsdl:types> -
+<s:schema targetNamespace="http://fdisk.at/" elementFormDefault="qualified"> -
+<s:element name="PrepareData"> -
+<s:complexType> -
+<s:sequence> 
+<s:element type="s:string" name="md5session" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:FdWsPrepareDataRequest" name="xmlRequest" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> 
+</s:element> -
+<s:complexType name="FdWsPrepareDataRequest"> -
+<s:sequence> 
+<s:element type="tns:FdWsExportType" name="type" maxOccurs="1" minOccurs="1"/> 
+<s:element type="tns:FdWsKurseRequest" name="kurse" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:FdWsMitgliederRequest" name="mitglieder" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:FdWsFWMitglieder144Request" name="fwMitglieder144" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:FdWsDienstgradeRequest" name="dienstgrade" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:FdWsAusbildungenRequest" name="ausbildungen" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:FdWsFunktionenRequest" name="funktionen" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:FdWsFunktionaereRequest" name="funktionaere" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:FdWsInstanzenRequest" name="instanzen" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:FdWsFeuerwachenRequest" name="feuerwachen" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:FdWsSonderdiensteRequest" name="sonderdienste" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:FdWsFWInstanzen144Request" name="fwInstanzen144" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:FdWsGeraeteRequest" name="geraete" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:FdWsFahrzeugeRequest" name="fahrzeuge" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:FdWsErreichbarkeitenFeuerwehrhaeuserRequest" name="erreichbarkeitenfeuerwehrhaeuser" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:FdWsErreichbarkeitenPersonenRequest" name="erreichbarkeitenpersonen" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:FdWsFeuerwehrhaeuserRequest" name="feuerwehrhaeuser" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:FdWsFeuerwehrGemeindenRequest" name="feuerwehrgemeinden" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:FdWsWasserdienstleistungsbewerbeRequest" name="wasserdienstleistungsbewerbe" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:FdWsFeuerwehrleistungsbewerbeRequest" name="feuerwehrleistungsbewerbe" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:simpleType name="FdWsExportType"> -
+<s:restriction base="s:string"> 
+<s:enumeration value="Feuerwachen"/> 
+<s:enumeration value="Kurse"/> 
+<s:enumeration value="Ausbildungen"/> 
+<s:enumeration value="Mitglieder"/> 
+<s:enumeration value="FWMitglieder144"/> 
+<s:enumeration value="Dienstgrade"/> 
+<s:enumeration value="Funktionen"/> 
+<s:enumeration value="Funktionaere"/> 
+<s:enumeration value="Instanzen"/> 
+<s:enumeration value="Sonderdienste"/> 
+<s:enumeration value="FWInstanzen144"/> 
+<s:enumeration value="FeuerwehrGemeinden"/> 
+<s:enumeration value="Feuerwehrhaeuser"/> 
+<s:enumeration value="ErreichbarkeitenFeuerwehrhaeuser"/> 
+<s:enumeration value="ErreichbarkeitenPersonen"/> 
+<s:enumeration value="Fahrzeuge"/> 
+<s:enumeration value="Geraete"/> 
+<s:enumeration value="Wasserdienstleistungsbewerbe"/> 
+<s:enumeration value="Feuerwehrleistungsbewerbe"/> 
+</s:restriction> 
+</s:simpleType> -
+<s:complexType name="FdWsKurseRequest"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfArrayOfFdWsKurseRequestFilter" name="filterGroup" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfArrayOfFdWsKurseRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfFdWsKurseRequestFilter" name="ArrayOfFdWsKurseRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsKurseRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsKurseRequestFilter" name="FdWsKurseRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="FdWsKurseRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsKurseExpFilter" name="type" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="value" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:simpleType name="FdWsKurseExpFilter"> -
+<s:restriction base="s:string"> 
+<s:enumeration value="FdiskIdPersonen"/> 
+<s:enumeration value="FdiskIdMitgliedschaften"/> 
+<s:enumeration value="FdiskIdKurse"/> 
+</s:restriction> 
+</s:simpleType> -
+<s:complexType name="FdWsMitgliederRequest"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfArrayOfFdWsMitgliederRequestFilter" name="filterGroup" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfArrayOfFdWsMitgliederRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfFdWsMitgliederRequestFilter" name="ArrayOfFdWsMitgliederRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsMitgliederRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsMitgliederRequestFilter" name="FdWsMitgliederRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="FdWsMitgliederRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsMitgliederExpFilter" name="type" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="value" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:simpleType name="FdWsMitgliederExpFilter"> -
+<s:restriction base="s:string"> 
+<s:enumeration value="FdiskIdMitglieder"/> 
+<s:enumeration value="FdiskIdPersonen"/> 
+<s:enumeration value="FdiskIdDienstgrade"/> 
+<s:enumeration value="Vorname"/> 
+<s:enumeration value="Nachname"/> 
+<s:enumeration value="Standesbuchnummer"/> 
+<s:enumeration value="InstanzNummer"/> 
+<s:enumeration value="LetzteAenderungVon"/> 
+<s:enumeration value="LetzteAenderungBis"/> 
+</s:restriction> 
+</s:simpleType> -
+<s:complexType name="FdWsFWMitglieder144Request"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfArrayOfFdWsFWMitglieder144RequestFilter" name="filterGroup" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfArrayOfFdWsFWMitglieder144RequestFilter"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfFdWsFWMitglieder144RequestFilter" name="ArrayOfFdWsFWMitglieder144RequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsFWMitglieder144RequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsFWMitglieder144RequestFilter" name="FdWsFWMitglieder144RequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="FdWsFWMitglieder144RequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsFWMitglieder144ExpFilter" name="type" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="value" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:simpleType name="FdWsFWMitglieder144ExpFilter"> -
+<s:restriction base="s:string"> 
+<s:enumeration value="FdiskIdInstanzen"/> 
+<s:enumeration value="FdiskIdMitglieder"/> 
+<s:enumeration value="FdiskIdPersonen"/> 
+<s:enumeration value="Vorname"/> 
+<s:enumeration value="Nachname"/> 
+<s:enumeration value="Standesbuchnummer"/> 
+<s:enumeration value="InstanzNummer"/> 
+</s:restriction> 
+</s:simpleType> -
+<s:complexType name="FdWsDienstgradeRequest"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfArrayOfFdWsDienstgradeRequestFilter" name="filterGroup" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfArrayOfFdWsDienstgradeRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfFdWsDienstgradeRequestFilter" name="ArrayOfFdWsDienstgradeRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsDienstgradeRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsDienstgradeRequestFilter" name="FdWsDienstgradeRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="FdWsDienstgradeRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsDienstgradeExpFilter" name="type" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="value" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:simpleType name="FdWsDienstgradeExpFilter"> -
+<s:restriction base="s:string"> 
+<s:enumeration value="FdiskIdDienstgrade"/> 
+<s:enumeration value="Langbezeichnung"/> 
+<s:enumeration value="Kurzbezeichnung"/> 
+</s:restriction> 
+</s:simpleType> -
+<s:complexType name="FdWsAusbildungenRequest"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfArrayOfFdWsAusbildungenRequestFilter" name="filterGroup" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfArrayOfFdWsAusbildungenRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfFdWsAusbildungenRequestFilter" name="ArrayOfFdWsAusbildungenRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsAusbildungenRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsAusbildungenRequestFilter" name="FdWsAusbildungenRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="FdWsAusbildungenRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsAusbildungenExpFilter" name="type" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="value" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:simpleType name="FdWsAusbildungenExpFilter"> -
+<s:restriction base="s:string"> 
+<s:enumeration value="FdiskIdPersonen"/> 
+<s:enumeration value="FdiskIdMitgliedschaften"/> 
+<s:enumeration value="FdiskIdAusbildungen"/> 
+</s:restriction> 
+</s:simpleType> -
+<s:complexType name="FdWsFunktionenRequest"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfArrayOfFdWsFunktionenRequestFilter" name="filterGroup" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfArrayOfFdWsFunktionenRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfFdWsFunktionenRequestFilter" name="ArrayOfFdWsFunktionenRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsFunktionenRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsFunktionenRequestFilter" name="FdWsFunktionenRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="FdWsFunktionenRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsFunktionenExpFilter" name="type" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="value" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:simpleType name="FdWsFunktionenExpFilter"> -
+<s:restriction base="s:string"> 
+<s:enumeration value="FdiskIdFunktionen"/> 
+<s:enumeration value="Langbezeichnung"/> 
+<s:enumeration value="Kurzbezeichnung"/> 
+<s:enumeration value="LetzteAenderungVon"/> 
+<s:enumeration value="LetzteAenderungBis"/> 
+</s:restriction> 
+</s:simpleType> -
+<s:complexType name="FdWsFunktionaereRequest"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfArrayOfFdWsFunktionaereRequestFilter" name="filterGroup" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfArrayOfFdWsFunktionaereRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfFdWsFunktionaereRequestFilter" name="ArrayOfFdWsFunktionaereRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsFunktionaereRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsFunktionaereRequestFilter" name="FdWsFunktionaereRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="FdWsFunktionaereRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsFunktionaereExpFilter" name="type" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="value" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:simpleType name="FdWsFunktionaereExpFilter"> -
+<s:restriction base="s:string"> 
+<s:enumeration value="FdiskIdFunktionen"/> 
+<s:enumeration value="FdiskIdMitglieder"/> 
+<s:enumeration value="InstanzNummer"/> 
+<s:enumeration value="GueltigVonVon"/> 
+<s:enumeration value="GueltigVonBis"/> 
+<s:enumeration value="GueltigBisVon"/> 
+<s:enumeration value="GueltigBisBis"/> 
+<s:enumeration value="NurAktive"/> 
+<s:enumeration value="LetzteAenderungVon"/> 
+<s:enumeration value="LetzteAenderungBis"/> 
+<s:enumeration value="DienstgradKurzBezeichnung"/> 
+<s:enumeration value="FunktionenKurzBezeichnung"/> 
+<s:enumeration value="FdiskIdPersonen"/> 
+</s:restriction> 
+</s:simpleType> -
+<s:complexType name="FdWsInstanzenRequest"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfArrayOfFdWsInstanzenRequestFilter" name="filterGroup" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfArrayOfFdWsInstanzenRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfFdWsInstanzenRequestFilter" name="ArrayOfFdWsInstanzenRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsInstanzenRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsInstanzenRequestFilter" name="FdWsInstanzenRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="FdWsInstanzenRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsInstanzenExpFilter" name="type" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="value" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:simpleType name="FdWsInstanzenExpFilter"> -
+<s:restriction base="s:string"> 
+<s:enumeration value="FdiskIdInstanzen"/> 
+<s:enumeration value="Instanznummer"/> 
+<s:enumeration value="InstanzArt"/> 
+<s:enumeration value="InstanzTyp"/> 
+</s:restriction> 
+</s:simpleType> -
+<s:complexType name="FdWsFeuerwachenRequest"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfArrayOfFdWsFeuerwachenRequestFilter" name="filterGroup" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfArrayOfFdWsFeuerwachenRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfFdWsFeuerwachenRequestFilter" name="ArrayOfFdWsFeuerwachenRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsFeuerwachenRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsFeuerwachenRequestFilter" name="FdWsFeuerwachenRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="FdWsFeuerwachenRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsFeuerwachenExpFilter" name="type" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="value" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:simpleType name="FdWsFeuerwachenExpFilter"> -
+<s:restriction base="s:string"> 
+<s:enumeration value="FdiskIdInstanzen"/> 
+<s:enumeration value="Instanznummer"/> 
+</s:restriction> 
+</s:simpleType> -
+<s:complexType name="FdWsSonderdiensteRequest"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfArrayOfFdWsSonderdiensteRequestFilter" name="filterGroup" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfArrayOfFdWsSonderdiensteRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfFdWsSonderdiensteRequestFilter" name="ArrayOfFdWsSonderdiensteRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsSonderdiensteRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsSonderdiensteRequestFilter" name="FdWsSonderdiensteRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="FdWsSonderdiensteRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsSonderdiensteExpFilter" name="type" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="value" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:simpleType name="FdWsSonderdiensteExpFilter"> -
+<s:restriction base="s:string"> 
+<s:enumeration value="FdiskIdInstanzen"/> 
+<s:enumeration value="Instanznummer"/> 
+<s:enumeration value="InstanzArt"/> 
+<s:enumeration value="InstanzTyp"/> 
+</s:restriction> 
+</s:simpleType> -
+<s:complexType name="FdWsFWInstanzen144Request"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfArrayOfFdWsFWInstanzen144RequestFilter" name="filterGroup" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfArrayOfFdWsFWInstanzen144RequestFilter"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfFdWsFWInstanzen144RequestFilter" name="ArrayOfFdWsFWInstanzen144RequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsFWInstanzen144RequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsFWInstanzen144RequestFilter" name="FdWsFWInstanzen144RequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="FdWsFWInstanzen144RequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsFWInstanzen144ExpFilter" name="type" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="value" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:simpleType name="FdWsFWInstanzen144ExpFilter"> -
+<s:restriction base="s:string"> 
+<s:enumeration value="FdiskIdInstanzen"/> 
+<s:enumeration value="Instanznummer"/> 
+<s:enumeration value="InstanzArt"/> 
+</s:restriction> 
+</s:simpleType> -
+<s:complexType name="FdWsGeraeteRequest"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfArrayOfFdWsGeraeteRequestFilter" name="filterGroup" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfArrayOfFdWsGeraeteRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfFdWsGeraeteRequestFilter" name="ArrayOfFdWsGeraeteRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsGeraeteRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsGeraeteRequestFilter" name="FdWsGeraeteRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="FdWsGeraeteRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsGeraeteExpFilter" name="type" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="value" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:simpleType name="FdWsGeraeteExpFilter"> -
+<s:restriction base="s:string"> 
+<s:enumeration value="InstanzNummer"/> 
+<s:enumeration value="FdiskIdInstanzen"/> 
+<s:enumeration value="FdiskIdGeraete"/> 
+<s:enumeration value="GeraeteGruppe"/> 
+<s:enumeration value="GeraeteStandard"/> 
+<s:enumeration value="GeraeteStatus"/> 
+<s:enumeration value="LetzteAenderungVon"/> 
+<s:enumeration value="LetzteAenderungBis"/> 
+</s:restriction> 
+</s:simpleType> -
+<s:complexType name="FdWsFahrzeugeRequest"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfArrayOfFdWsFahrzeugeRequestFilter" name="filterGroup" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfArrayOfFdWsFahrzeugeRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfFdWsFahrzeugeRequestFilter" name="ArrayOfFdWsFahrzeugeRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsFahrzeugeRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsFahrzeugeRequestFilter" name="FdWsFahrzeugeRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="FdWsFahrzeugeRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsFahrzeugeExpFilter" name="type" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="value" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:simpleType name="FdWsFahrzeugeExpFilter"> -
+<s:restriction base="s:string"> 
+<s:enumeration value="InstanzNummer"/> 
+<s:enumeration value="FdiskIdInstanzen"/> 
+<s:enumeration value="FzgStatus"/> 
+<s:enumeration value="TaktischeBezeichnung"/> 
+<s:enumeration value="Feuerwache"/> 
+<s:enumeration value="FdiskIdFahrzeuge"/> 
+<s:enumeration value="LetzteAenderungVon"/> 
+<s:enumeration value="LetzteAenderungBis"/> 
+</s:restriction> 
+</s:simpleType> -
+<s:complexType name="FdWsErreichbarkeitenFeuerwehrhaeuserRequest"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfArrayOfFdWsErreichbarkeitenFeuerwehrhaeuserRequestFilter" name="filterGroup" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfArrayOfFdWsErreichbarkeitenFeuerwehrhaeuserRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfFdWsErreichbarkeitenFeuerwehrhaeuserRequestFilter" name="ArrayOfFdWsErreichbarkeitenFeuerwehrhaeuserRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsErreichbarkeitenFeuerwehrhaeuserRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsErreichbarkeitenFeuerwehrhaeuserRequestFilter" name="FdWsErreichbarkeitenFeuerwehrhaeuserRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="FdWsErreichbarkeitenFeuerwehrhaeuserRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsErreichbarkeitenFeuerwehrhaeuserExpFilter" name="type" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="value" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:simpleType name="FdWsErreichbarkeitenFeuerwehrhaeuserExpFilter"> -
+<s:restriction base="s:string"> 
+<s:enumeration value="FdiskIdFeuerwehrhaeuser"/> 
+<s:enumeration value="Feuerwache"/> 
+<s:enumeration value="InstanzNummer"/> 
+<s:enumeration value="InstanzArt"/> 
+<s:enumeration value="ErreichbarkeitArt"/> 
+<s:enumeration value="LetzteAenderungVon"/> 
+<s:enumeration value="LetzteAenderungBis"/> 
+</s:restriction> 
+</s:simpleType> -
+<s:complexType name="FdWsErreichbarkeitenPersonenRequest"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfArrayOfFdWsErreichbarkeitenPersonenRequestFilter" name="filterGroup" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfArrayOfFdWsErreichbarkeitenPersonenRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfFdWsErreichbarkeitenPersonenRequestFilter" name="ArrayOfFdWsErreichbarkeitenPersonenRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsErreichbarkeitenPersonenRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsErreichbarkeitenPersonenRequestFilter" name="FdWsErreichbarkeitenPersonenRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="FdWsErreichbarkeitenPersonenRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsErreichbarkeitenPersonenExpFilter" name="type" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="value" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:simpleType name="FdWsErreichbarkeitenPersonenExpFilter"> -
+<s:restriction base="s:string"> 
+<s:enumeration value="FdiskIdPersonen"/> 
+<s:enumeration value="ErreichbarkeitArt"/> 
+<s:enumeration value="LetzteAenderungVon"/> 
+<s:enumeration value="LetzteAenderungBis"/> 
+</s:restriction> 
+</s:simpleType> -
+<s:complexType name="FdWsFeuerwehrhaeuserRequest"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfArrayOfFdWsFeuerwehrhaeuserRequestFilter" name="filterGroup" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfArrayOfFdWsFeuerwehrhaeuserRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfFdWsFeuerwehrhaeuserRequestFilter" name="ArrayOfFdWsFeuerwehrhaeuserRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsFeuerwehrhaeuserRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsFeuerwehrhaeuserRequestFilter" name="FdWsFeuerwehrhaeuserRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="FdWsFeuerwehrhaeuserRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsFeuerwehrhaeuserExpFilter" name="type" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="value" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:simpleType name="FdWsFeuerwehrhaeuserExpFilter"> -
+<s:restriction base="s:string"> 
+<s:enumeration value="FdiskIdFeuerwehrhaeuser"/> 
+<s:enumeration value="FdiskIdFeuerwehren"/> 
+<s:enumeration value="FdiskIdInstanzen"/> 
+<s:enumeration value="Instanznummer"/> 
+<s:enumeration value="LetzteAenderungVon"/> 
+<s:enumeration value="LetzteAenderungBis"/> 
+<s:enumeration value="Feuerwache"/> 
+</s:restriction> 
+</s:simpleType> -
+<s:complexType name="FdWsFeuerwehrGemeindenRequest"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfArrayOfFdWsFeuerwehrGemeindenRequestFilter" name="filterGroup" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfArrayOfFdWsFeuerwehrGemeindenRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfFdWsFeuerwehrGemeindenRequestFilter" name="ArrayOfFdWsFeuerwehrGemeindenRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsFeuerwehrGemeindenRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsFeuerwehrGemeindenRequestFilter" name="FdWsFeuerwehrGemeindenRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="FdWsFeuerwehrGemeindenRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsFeuerwehrGemeindenExpFilter" name="type" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="value" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:simpleType name="FdWsFeuerwehrGemeindenExpFilter"> -
+<s:restriction base="s:string"> 
+<s:enumeration value="FdiskIdFwInstanzen"/> 
+<s:enumeration value="FwNummer"/> 
+<s:enumeration value="FwName"/> 
+<s:enumeration value="FdiskIdGemInstanzen"/> 
+<s:enumeration value="GemNummer"/> 
+<s:enumeration value="GemName"/> 
+</s:restriction> 
+</s:simpleType> -
+<s:complexType name="FdWsWasserdienstleistungsbewerbeRequest"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfArrayOfFdWsWasserdienstleistungsbewerbeRequestFilter" name="filterGroup" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfArrayOfFdWsWasserdienstleistungsbewerbeRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfFdWsWasserdienstleistungsbewerbeRequestFilter" name="ArrayOfFdWsWasserdienstleistungsbewerbeRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsWasserdienstleistungsbewerbeRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsWasserdienstleistungsbewerbeRequestFilter" name="FdWsWasserdienstleistungsbewerbeRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="FdWsWasserdienstleistungsbewerbeRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsWasserdienstleistungsbewerbeExpFilter" name="type" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="value" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:simpleType name="FdWsWasserdienstleistungsbewerbeExpFilter"> -
+<s:restriction base="s:string"> 
+<s:enumeration value="FdiskIdBewerbe"/> 
+</s:restriction> 
+</s:simpleType> -
+<s:complexType name="FdWsFeuerwehrleistungsbewerbeRequest"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfArrayOfFdWsFeuerwehrleistungsbewerbeRequestFilter" name="filterGroup" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfArrayOfFdWsFeuerwehrleistungsbewerbeRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:ArrayOfFdWsFeuerwehrleistungsbewerbeRequestFilter" name="ArrayOfFdWsFeuerwehrleistungsbewerbeRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsFeuerwehrleistungsbewerbeRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsFeuerwehrleistungsbewerbeRequestFilter" name="FdWsFeuerwehrleistungsbewerbeRequestFilter" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="FdWsFeuerwehrleistungsbewerbeRequestFilter"> -
+<s:sequence> 
+<s:element type="tns:FdWsFeuerwehrleistungsbewerbeExpFilter" name="type" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="value" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:simpleType name="FdWsFeuerwehrleistungsbewerbeExpFilter"> -
+<s:restriction base="s:string"> 
+<s:enumeration value="FdiskIdBewerbe"/> 
+</s:restriction> 
+</s:simpleType> -
+<s:element name="PrepareDataResponse"> -
+<s:complexType> -
+<s:sequence> 
+<s:element type="tns:FdWsPrepareDataReturn" name="PrepareDataResult" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> 
+</s:element> -
+<s:complexType name="FdWsPrepareDataReturn"> -
+<s:sequence> 
+<s:element type="s:long" name="resultCount" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="statusMessage" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:StatusCodes" name="statusCode" maxOccurs="1" minOccurs="1"/> 
+</s:sequence> 
+</s:complexType> -
+<s:simpleType name="StatusCodes"> -
+<s:restriction base="s:string"> 
+<s:enumeration value="OK"/> 
+<s:enumeration value="UNKNOWN_ERROR"/> 
+<s:enumeration value="NO_DATA_FOUND"/> 
+<s:enumeration value="NO_MORE_DATA"/> 
+<s:enumeration value="MISSING_DATA"/> 
+<s:enumeration value="LOGIN_FAILED"/> 
+<s:enumeration value="NO_PERMISSION"/> 
+<s:enumeration value="NOT_LOGGED_IN"/> 
+<s:enumeration value="MIN_IDENTIFIER_NOT_SET"/> 
+<s:enumeration value="IDENTIFIER_NOT_UNIQUE"/> 
+<s:enumeration value="NO_IMPORT_DATA"/> 
+</s:restriction> 
+</s:simpleType> -
+<s:element name="getNextDataBlock"> -
+<s:complexType> -
+<s:sequence> 
+<s:element type="s:string" name="md5session" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> 
+</s:element> -
+<s:element name="getNextDataBlockResponse"> -
+<s:complexType> -
+<s:sequence> 
+<s:element type="tns:FdWsGetNextDataBlockReturn" name="getNextDataBlockResult" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> 
+</s:element> -
+<s:complexType name="FdWsGetNextDataBlockReturn"> -
+<s:sequence> 
+<s:element type="s:string" name="statusMessage" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:StatusCodes" name="statusCode" maxOccurs="1" minOccurs="1"/> 
+<s:element type="tns:ArrayOfFdWsFWMitglieder144Struct" name="fwMitglieder144" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:ArrayOfFdWsMitgliederStruct" name="mitglieder" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:ArrayOfFdWsAusbildungenStruct" name="ausbildungen" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:ArrayOfFdWsKurseStruct" name="kurse" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:ArrayOfFdWsDienstgradeStruct" name="dienstgrade" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:ArrayOfFdWsSonderdiensteStruct" name="sonderdienste" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:ArrayOfFdWsFunktionenStruct" name="funktionen" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:ArrayOfFdWsFunktionaereStruct" name="funktionaere" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:ArrayOfFdWsInstanzenStruct" name="instanzen" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:ArrayOfFdWsFWInstanzen144Struct" name="fwInstanzen144" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:ArrayOfFdWsGeraeteStruct" name="geraete" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:ArrayOfFdWsFahrzeugeStruct" name="fahrzeuge" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:ArrayOfFdWsFeuerwachenStruct" name="feuerwachen" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:ArrayOfFdWsErreichbarkeitenFeuerwehrhaeuserStruct" name="erreichbarkeitenfeuerwehrhaeuser" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:ArrayOfFdWsErreichbarkeitenPersonenStruct" name="erreichbarkeitenpersonen" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:ArrayOfFdWsFeuerwehrhaeuserStruct" name="feuerwehrhaeuser" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:ArrayOfFdWsFeuerwehrGemeindenStruct" name="feuerwehrgemeinden" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:ArrayOfFdWsWasserdienstleistungsbewerbeStruct" name="wasserdienstleistungsbewerbe" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:ArrayOfFdWsFeuerwehrleistungsbewerbeStruct" name="feuerwehrleistungsbewerbe" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsFWMitglieder144Struct"> -
+<s:sequence> 
+<s:element type="tns:FdWsFWMitglieder144Struct" name="FdWsFWMitglieder144Struct" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="FdWsFWMitglieder144Struct"> -
+<s:complexContent mixed="false"> -
+<s:extension base="tns:Writer"> -
+<s:sequence> 
+<s:element type="s:long" name="FdiskIdInstanzen" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="Instanznummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Standesbuchnummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Vorname" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Zuname" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:long" name="FdiskIdMitglieder" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:long" name="FdiskIdPersonen" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="Titel" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Namenszusatz" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:extension> 
+</s:complexContent> 
+</s:complexType> -
+<s:complexType name="Writer"> -
+<s:complexContent mixed="false"> 
+<s:extension base="tns:TypeMapper"/> 
+</s:complexContent> 
+</s:complexType> 
+<s:complexType name="TypeMapper"/> -
+<s:complexType name="FdWsFeuerwehrleistungsbewerbeStruct"> -
+<s:complexContent mixed="false"> -
+<s:extension base="tns:Writer"> -
+<s:sequence> 
+<s:element type="s:long" name="FdiskIdBewerbe" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:long" name="FdiskIdPersonen" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="DienstgradKurz" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:long" name="FdiskIdBewerbsgruppen" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="Bewerbsgruppe" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:long" name="Bewerbsgruppennummer" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="Bewerbsbezeichnung" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Instanzart" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Instanzname" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Bezirk" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Abschnitt" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:double" name="ErreichtePunkte" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="BewerbsgruppenStatus" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="WertungsklasseLangBez" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Wertungsklasse" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Alterspunkte" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Titel" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Zuname" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Vorname" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Leistungsabzeichen" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Leistungsabzeichenstufe" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Bewerbsort" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:dateTime" name="Bewerbstag" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="LFKKommandant" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="BewerbsKommandant" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Bewerbsleiter" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:boolean" name="LeistungsabzeichenErhalten" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:dateTime" name="LetzteAenderung" maxOccurs="1" minOccurs="1"/> 
+<s:element type="tns:ArrayOfFdWsFeuerwehrleistungsbewerbePunkte" name="DetailPunkte" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:extension> 
+</s:complexContent> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsFeuerwehrleistungsbewerbePunkte"> -
+<s:sequence> 
+<s:element type="tns:FdWsFeuerwehrleistungsbewerbePunkte" name="FdWsFeuerwehrleistungsbewerbePunkte" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="FdWsFeuerwehrleistungsbewerbePunkte"> -
+<s:sequence> 
+<s:element type="s:string" name="Bezeichnung" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:double" name="Punkte" maxOccurs="1" minOccurs="1"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="FdWsWasserdienstleistungsbewerbeStruct"> -
+<s:complexContent mixed="false"> -
+<s:extension base="tns:Writer"> -
+<s:sequence> 
+<s:element type="s:long" name="FdiskIdBewerbsgruppen" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="Durchgang" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Zillennummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Farbe" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Bewerbsbezeichnung" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Instanzname" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Wertungsklasse" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Alterspunkte" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="AlterspunkteWert" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Name1" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Name2" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:dateTime" name="LetzteAenderung" maxOccurs="1" minOccurs="1"/> 
+</s:sequence> 
+</s:extension> 
+</s:complexContent> 
+</s:complexType> -
+<s:complexType name="FdWsFeuerwehrGemeindenStruct"> -
+<s:complexContent mixed="false"> -
+<s:extension base="tns:Writer"> -
+<s:sequence> 
+<s:element type="s:long" name="FdiskIdFwInstanzen" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="FwNummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="FwName" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:long" name="FdiskIdGemInstanzen" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="GemNummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="GemName" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:extension> 
+</s:complexContent> 
+</s:complexType> -
+<s:complexType name="FdWsFeuerwehrhaeuserStruct"> -
+<s:complexContent mixed="false"> -
+<s:extension base="tns:Writer"> -
+<s:sequence> 
+<s:element type="s:long" name="FdiskIdFeuerwehrhaeuser" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:long" name="FdiskIdFeuerwehren" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:long" name="FdiskIdInstanzen" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="Instanznummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Instanzname" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:dateTime" name="Gruendungsdatum" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="Hausbezeichnung" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Strasse" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Nummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Stiege" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Kathastralgemeinde" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="PLZ" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Ort" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitMail" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitMobil" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitFestnetz" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitFax" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitGruppenRic" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitUrl" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Koordinaten" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:dateTime" name="LetzteAenderung" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="Feuerwache" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:extension> 
+</s:complexContent> 
+</s:complexType> -
+<s:complexType name="FdWsErreichbarkeitenPersonenStruct"> -
+<s:complexContent mixed="false"> -
+<s:extension base="tns:Writer"> -
+<s:sequence> 
+<s:element type="s:long" name="FdiskIdPersonen" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="ErreichbarkeitArt" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Erreichbarkeit" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:dateTime" name="LetzteAenderung" maxOccurs="1" minOccurs="1"/> 
+</s:sequence> 
+</s:extension> 
+</s:complexContent> 
+</s:complexType> -
+<s:complexType name="FdWsErreichbarkeitenFeuerwehrhaeuserStruct"> -
+<s:complexContent mixed="false"> -
+<s:extension base="tns:Writer"> -
+<s:sequence> 
+<s:element type="s:long" name="FdiskIdFeuerwehrhaeuser" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="Feuerwache" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="InstanzNummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="InstanzArt" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitArt" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Erreichbarkeit" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:dateTime" name="LetzteAenderung" maxOccurs="1" minOccurs="1"/> 
+</s:sequence> 
+</s:extension> 
+</s:complexContent> 
+</s:complexType> -
+<s:complexType name="FdWsFeuerwachenStruct"> -
+<s:complexContent mixed="false"> -
+<s:extension base="tns:Writer"> -
+<s:sequence> 
+<s:element type="s:long" name="FdiskIdInstanzen" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:dateTime" name="Gruendungsdatum" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="Instanznummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Instanzname" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Feuerwachenname" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Feuerwachennummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="InstanzArt" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="InstanzTyp" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Strasse" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Nummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Stiege" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Kathastralgemeinde" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="PLZ" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Ort" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:dateTime" name="LetzteAenderung" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="UAFKDONummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="UAFKDOName" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="UAFKDOInstanzartLang" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="BFKDONummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="BFKDOName" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="BFKDOInstanzartLang" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="AFKDONummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="AFKDOName" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="AFKDOInstanzartLang" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="GemeindeName" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:extension> 
+</s:complexContent> 
+</s:complexType> -
+<s:complexType name="FdWsFahrzeugeStruct"> -
+<s:complexContent mixed="false"> -
+<s:extension base="tns:Writer"> -
+<s:sequence> 
+<s:element type="s:long" name="FdiskIdFahrzeuge" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:long" name="FdiskIdInstanzen" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="InstanzNummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="FzgStatus" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="TaktischeBezeichnung" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:long" name="Baujahr" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="Feuerwache" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="KfzKennzeichen" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Treibstoffart" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Funkrufzeichen" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Fahrzeugart" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Fahrzeugtyp" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Fahrzeugmarke" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Sonderausstattung" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:dateTime" name="LetzteAenderung" maxOccurs="1" minOccurs="1"/> 
+</s:sequence> 
+</s:extension> 
+</s:complexContent> 
+</s:complexType> -
+<s:complexType name="FdWsGeraeteStruct"> -
+<s:complexContent mixed="false"> -
+<s:extension base="tns:Writer"> -
+<s:sequence> 
+<s:element type="s:long" name="FdiskIdGeraete" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:long" name="FdiskIdInstanzen" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="InstanzNummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="GeraeteBezeichnung" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="GeraeteGruppe" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="GeraeteStandard" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:long" name="GeraeteAnzahl" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="GeraeteStatus" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:dateTime" name="LetzteAenderung" maxOccurs="1" minOccurs="1"/> 
+</s:sequence> 
+</s:extension> 
+</s:complexContent> 
+</s:complexType> -
+<s:complexType name="FdWsFWInstanzen144Struct"> -
+<s:complexContent mixed="false"> -
+<s:extension base="tns:Writer"> -
+<s:sequence> 
+<s:element type="s:long" name="FdiskIdInstanzen" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="Instanznummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Instanzname" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="InstanzArt" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="InstanzArtLang" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:extension> 
+</s:complexContent> 
+</s:complexType> -
+<s:complexType name="FdWsInstanzenStruct"> -
+<s:complexContent mixed="false"> -
+<s:extension base="tns:Writer"> -
+<s:sequence> 
+<s:element type="s:long" name="FdiskIdInstanzen" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:dateTime" name="Gruendungsdatum" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="Instanznummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Instanzname" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="InstanzArt" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="InstanzTyp" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Strasse" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Nummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Stiege" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Kathastralgemeinde" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="PLZ" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Ort" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitMail" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitMobil" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitFestnetz" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitFax" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitGruppenRic" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitUrl" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:dateTime" name="LetzteAenderung" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="UAFKDONummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="UAFKDOName" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="UAFKDOInstanzartLang" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="BFKDONummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="BFKDOName" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="BFKDOInstanzartLang" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="AFKDONummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="AFKDOName" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="AFKDOInstanzartLang" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="GemeindeName" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:boolean" name="Feuerwachen" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:boolean" name="HatJugend" maxOccurs="1" minOccurs="1"/> 
+</s:sequence> 
+</s:extension> 
+</s:complexContent> 
+</s:complexType> -
+<s:complexType name="FdWsFunktionaereStruct"> -
+<s:complexContent mixed="false"> -
+<s:extension base="tns:Writer"> -
+<s:sequence> 
+<s:element type="s:long" name="FdiskIdFunktionen" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:long" name="FdiskIdMitglieder" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="InstanzNummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Standesbuchnummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:dateTime" name="GueltigVon" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:dateTime" name="GueltigBis" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:dateTime" name="LetzteAenderung" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="Vorname" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Zuname" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="DienstgradKurzbezeichnung" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="FunktionenKurzBezeichnung" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="InstanzArt" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:long" name="FdiskIdPersonen" maxOccurs="1" minOccurs="1"/> 
+</s:sequence> 
+</s:extension> 
+</s:complexContent> 
+</s:complexType> -
+<s:complexType name="FdWsFunktionenStruct"> -
+<s:complexContent mixed="false"> -
+<s:extension base="tns:Writer"> -
+<s:sequence> 
+<s:element type="s:long" name="FdiskIdFunktionen" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="Langbezeichnung" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Kurzbezeichnung" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:dateTime" name="LetzteAenderung" maxOccurs="1" minOccurs="1"/> 
+</s:sequence> 
+</s:extension> 
+</s:complexContent> 
+</s:complexType> -
+<s:complexType name="FdWsSonderdiensteStruct"> -
+<s:complexContent mixed="false"> -
+<s:extension base="tns:Writer"> -
+<s:sequence> 
+<s:element type="s:long" name="FdiskIdInstanzen" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:dateTime" name="Gruendungsdatum" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="Instanznummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Instanzname" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="InstanzArt" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="InstanzTyp" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Strasse" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Nummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Stiege" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Kathastralgemeinde" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="PLZ" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Ort" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitMail" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitMobil" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitFestnetz" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitFax" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitGruppenRic" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitUrl" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:dateTime" name="LetzteAenderung" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="UAFKDONummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="UAFKDOName" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="UAFKDOInstanzartLang" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="BFKDONummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="BFKDOName" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="BFKDOInstanzartLang" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="AFKDONummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="AFKDOName" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="AFKDOInstanzartLang" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:extension> 
+</s:complexContent> 
+</s:complexType> -
+<s:complexType name="FdWsDienstgradeStruct"> -
+<s:complexContent mixed="false"> -
+<s:extension base="tns:Writer"> -
+<s:sequence> 
+<s:element type="s:long" name="FdiskIdDienstgrade" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="Langbezeichnung" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Kurzbezeichnung" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:long" name="Rang" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:dateTime" name="LetzteAenderung" maxOccurs="1" minOccurs="1"/> 
+</s:sequence> 
+</s:extension> 
+</s:complexContent> 
+</s:complexType> -
+<s:complexType name="FdWsKurseStruct"> -
+<s:complexContent mixed="false"> -
+<s:extension base="tns:Writer"> -
+<s:sequence> 
+<s:element type="s:long" name="FdiskIdKurse" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="Kursnummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Bezeichnung" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Leistungsart" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:dateTime" name="Von" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:dateTime" name="Bis" maxOccurs="1" minOccurs="1"/> 
+</s:sequence> 
+</s:extension> 
+</s:complexContent> 
+</s:complexType> -
+<s:complexType name="FdWsAusbildungenStruct"> -
+<s:complexContent mixed="false"> -
+<s:extension base="tns:Writer"> -
+<s:sequence> 
+<s:element type="s:long" name="FdiskIdAusbildungen" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:long" name="FdiskIdErsatzlehrgaenge" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="Bezeichnung" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Anmerkung" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:dateTime" name="Datum" maxOccurs="1" minOccurs="1"/> 
+</s:sequence> 
+</s:extension> 
+</s:complexContent> 
+</s:complexType> -
+<s:complexType name="FdWsMitgliederStruct"> -
+<s:complexContent mixed="false"> -
+<s:extension base="tns:Writer"> -
+<s:sequence> 
+<s:element type="s:long" name="FdiskIdMitglieder" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:long" name="FdiskIdPersonen" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:long" name="FdiskIdDienstgrade" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="Instanznummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Standesbuchnummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Dienstgrad" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="DienstgradLang" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Titel" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Vorname" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Zuname" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Namenszusatz" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Strasse" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Nummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Stiege" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Kathastralgemeinde" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="PLZ" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Ort" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Geschlecht" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitMail" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitMobil" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitFestnetz" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitFax" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitGruppenRic" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitUrl" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:dateTime" name="Geburtsdatum" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="Versicherungsnummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:dateTime" name="DatumAbmeldung" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:dateTime" name="DatumEhrenmitglied" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:dateTime" name="DatumJugend" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:dateTime" name="DatumReserve" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:dateTime" name="DatumAktiv" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:dateTime" name="DatumEintritt" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:boolean" name="FlagAktiv" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:boolean" name="FlagEhrenmitglied" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:boolean" name="FlagJugend" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:boolean" name="FlagAbgemeldet" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:boolean" name="FlagReserve" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:boolean" name="FlagZivildienst" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:dateTime" name="LetzteAenderung" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:string" name="ErreichbarkeitMobilFirma" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="ErreichbarkeitFestnetzFirma" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Firma" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Branche" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="FirmaStrasse" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="FirmaNummer" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="FirmaPlz" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="FirmaOrt" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="Fuehrerscheinklassen" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="HasJugendfoerderung" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:boolean" name="Feuerwachen" maxOccurs="1" minOccurs="1"/> 
+<s:element type="s:long" name="Vordienstzeiten" maxOccurs="1" minOccurs="1"/> 
+</s:sequence> 
+</s:extension> 
+</s:complexContent> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsMitgliederStruct"> -
+<s:sequence> 
+<s:element type="tns:FdWsMitgliederStruct" name="FdWsMitgliederStruct" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsAusbildungenStruct"> -
+<s:sequence> 
+<s:element type="tns:FdWsAusbildungenStruct" name="FdWsAusbildungenStruct" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsKurseStruct"> -
+<s:sequence> 
+<s:element type="tns:FdWsKurseStruct" name="FdWsKurseStruct" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsDienstgradeStruct"> -
+<s:sequence> 
+<s:element type="tns:FdWsDienstgradeStruct" name="FdWsDienstgradeStruct" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsSonderdiensteStruct"> -
+<s:sequence> 
+<s:element type="tns:FdWsSonderdiensteStruct" name="FdWsSonderdiensteStruct" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsFunktionenStruct"> -
+<s:sequence> 
+<s:element type="tns:FdWsFunktionenStruct" name="FdWsFunktionenStruct" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsFunktionaereStruct"> -
+<s:sequence> 
+<s:element type="tns:FdWsFunktionaereStruct" name="FdWsFunktionaereStruct" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsInstanzenStruct"> -
+<s:sequence> 
+<s:element type="tns:FdWsInstanzenStruct" name="FdWsInstanzenStruct" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsFWInstanzen144Struct"> -
+<s:sequence> 
+<s:element type="tns:FdWsFWInstanzen144Struct" name="FdWsFWInstanzen144Struct" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsGeraeteStruct"> -
+<s:sequence> 
+<s:element type="tns:FdWsGeraeteStruct" name="FdWsGeraeteStruct" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsFahrzeugeStruct"> -
+<s:sequence> 
+<s:element type="tns:FdWsFahrzeugeStruct" name="FdWsFahrzeugeStruct" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsFeuerwachenStruct"> -
+<s:sequence> 
+<s:element type="tns:FdWsFeuerwachenStruct" name="FdWsFeuerwachenStruct" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsErreichbarkeitenFeuerwehrhaeuserStruct"> -
+<s:sequence> 
+<s:element type="tns:FdWsErreichbarkeitenFeuerwehrhaeuserStruct" name="FdWsErreichbarkeitenFeuerwehrhaeuserStruct" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsErreichbarkeitenPersonenStruct"> -
+<s:sequence> 
+<s:element type="tns:FdWsErreichbarkeitenPersonenStruct" name="FdWsErreichbarkeitenPersonenStruct" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsFeuerwehrhaeuserStruct"> -
+<s:sequence> 
+<s:element type="tns:FdWsFeuerwehrhaeuserStruct" name="FdWsFeuerwehrhaeuserStruct" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsFeuerwehrGemeindenStruct"> -
+<s:sequence> 
+<s:element type="tns:FdWsFeuerwehrGemeindenStruct" name="FdWsFeuerwehrGemeindenStruct" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsWasserdienstleistungsbewerbeStruct"> -
+<s:sequence> 
+<s:element type="tns:FdWsWasserdienstleistungsbewerbeStruct" name="FdWsWasserdienstleistungsbewerbeStruct" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:complexType name="ArrayOfFdWsFeuerwehrleistungsbewerbeStruct"> -
+<s:sequence> 
+<s:element type="tns:FdWsFeuerwehrleistungsbewerbeStruct" name="FdWsFeuerwehrleistungsbewerbeStruct" maxOccurs="unbounded" minOccurs="0" nillable="true"/> 
+</s:sequence> 
+</s:complexType> -
+<s:element name="Authorize"> -
+<s:complexType> -
+<s:sequence> 
+<s:element type="s:string" name="user" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="password" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="instanz" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> 
+</s:element> -
+<s:element name="AuthorizeResponse"> -
+<s:complexType> -
+<s:sequence> 
+<s:element type="tns:FdWsAuthorizeReturn" name="AuthorizeResult" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> 
+</s:element> -
+<s:complexType name="FdWsAuthorizeReturn"> -
+<s:sequence> 
+<s:element type="s:string" name="md5session" maxOccurs="1" minOccurs="0"/> 
+<s:element type="s:string" name="statusMessage" maxOccurs="1" minOccurs="0"/> 
+<s:element type="tns:StatusCodes" name="statusCode" maxOccurs="1" minOccurs="1"/> 
+</s:sequence> 
+</s:complexType> -
+<s:element name="closeSession"> -
+<s:complexType> -
+<s:sequence> 
+<s:element type="s:string" name="md5session" maxOccurs="1" minOccurs="0"/> 
+</s:sequence> 
+</s:complexType> 
+</s:element> -
+<s:element name="closeSessionResponse"> 
+<s:complexType/> 
+</s:element> 
+</s:schema> 
+</wsdl:types> -
+<wsdl:message name="PrepareDataSoapIn"> 
+<wsdl:part name="parameters" element="tns:PrepareData"/> 
+</wsdl:message> -
+<wsdl:message name="PrepareDataSoapOut"> 
+<wsdl:part name="parameters" element="tns:PrepareDataResponse"/> 
+</wsdl:message> -
+<wsdl:message name="getNextDataBlockSoapIn"> 
+<wsdl:part name="parameters" element="tns:getNextDataBlock"/> 
+</wsdl:message> -
+<wsdl:message name="getNextDataBlockSoapOut"> 
+<wsdl:part name="parameters" element="tns:getNextDataBlockResponse"/> 
+</wsdl:message> -
+<wsdl:message name="AuthorizeSoapIn"> 
+<wsdl:part name="parameters" element="tns:Authorize"/> 
+</wsdl:message> -
+<wsdl:message name="AuthorizeSoapOut"> 
+<wsdl:part name="parameters" element="tns:AuthorizeResponse"/> 
+</wsdl:message> -
+<wsdl:message name="closeSessionSoapIn"> 
+<wsdl:part name="parameters" element="tns:closeSession"/> 
+</wsdl:message> -
+<wsdl:message name="closeSessionSoapOut"> 
+<wsdl:part name="parameters" element="tns:closeSessionResponse"/> 
+</wsdl:message> -
+<wsdl:portType name="FdExportSoap"> -
+<wsdl:operation name="PrepareData"> 
+<wsdl:input message="tns:PrepareDataSoapIn"/> 
+<wsdl:output message="tns:PrepareDataSoapOut"/> 
+</wsdl:operation> -
+<wsdl:operation name="getNextDataBlock"> 
+<wsdl:input message="tns:getNextDataBlockSoapIn"/> 
+<wsdl:output message="tns:getNextDataBlockSoapOut"/> 
+</wsdl:operation> -
+<wsdl:operation name="Authorize"> 
+<wsdl:input message="tns:AuthorizeSoapIn"/> 
+<wsdl:output message="tns:AuthorizeSoapOut"/> 
+</wsdl:operation> -
+<wsdl:operation name="closeSession"> 
+<wsdl:input message="tns:closeSessionSoapIn"/> 
+<wsdl:output message="tns:closeSessionSoapOut"/> 
+</wsdl:operation> 
+</wsdl:portType> -
+<wsdl:binding type="tns:FdExportSoap" name="FdExportSoap"> 
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/> -
+<wsdl:operation name="PrepareData"> 
+<soap:operation style="document" soapAction="http://fdisk.at/PrepareData"/> -
+<wsdl:input> 
+<soap:body use="literal"/> 
+</wsdl:input> -
+<wsdl:output> 
+<soap:body use="literal"/> 
+</wsdl:output> 
+</wsdl:operation> -
+<wsdl:operation name="getNextDataBlock"> 
+<soap:operation style="document" soapAction="http://fdisk.at/getNextDataBlock"/> -
+<wsdl:input> 
+<soap:body use="literal"/> 
+</wsdl:input> -
+<wsdl:output> 
+<soap:body use="literal"/> 
+</wsdl:output> 
+</wsdl:operation> -
+<wsdl:operation name="Authorize"> 
+<soap:operation style="document" soapAction="http://fdisk.at/Authorize"/> -
+<wsdl:input> 
+<soap:body use="literal"/> 
+</wsdl:input> -
+<wsdl:output> 
+<soap:body use="literal"/> 
+</wsdl:output> 
+</wsdl:operation> -
+<wsdl:operation name="closeSession"> 
+<soap:operation style="document" soapAction="http://fdisk.at/closeSession"/> -
+<wsdl:input> 
+<soap:body use="literal"/> 
+</wsdl:input> -
+<wsdl:output> 
+<soap:body use="literal"/> 
+</wsdl:output> 
+</wsdl:operation> 
+</wsdl:binding> -
+<wsdl:binding type="tns:FdExportSoap" name="FdExportSoap12"> 
+<soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/> -
+<wsdl:operation name="PrepareData"> 
+<soap12:operation style="document" soapAction="http://fdisk.at/PrepareData"/> -
+<wsdl:input> 
+<soap12:body use="literal"/> 
+</wsdl:input> -
+<wsdl:output> 
+<soap12:body use="literal"/> 
+</wsdl:output> 
+</wsdl:operation> -
+<wsdl:operation name="getNextDataBlock"> 
+<soap12:operation style="document" soapAction="http://fdisk.at/getNextDataBlock"/> -
+<wsdl:input> 
+<soap12:body use="literal"/> 
+</wsdl:input> -
+<wsdl:output> 
+<soap12:body use="literal"/> 
+</wsdl:output> 
+</wsdl:operation> -
+<wsdl:operation name="Authorize"> 
+<soap12:operation style="document" soapAction="http://fdisk.at/Authorize"/> -
+<wsdl:input> 
+<soap12:body use="literal"/> 
+</wsdl:input> -
+<wsdl:output> 
+<soap12:body use="literal"/> 
+</wsdl:output> 
+</wsdl:operation> -
+<wsdl:operation name="closeSession"> 
+<soap12:operation style="document" soapAction="http://fdisk.at/closeSession"/> -
+<wsdl:input> 
+<soap12:body use="literal"/> 
+</wsdl:input> -
+<wsdl:output> 
+<soap12:body use="literal"/> 
+</wsdl:output> 
+</wsdl:operation> 
+</wsdl:binding> -
+<wsdl:service name="FdExport"> -
+<wsdl:port name="FdExportSoap" binding="tns:FdExportSoap"> 
+<soap:address location="https://app.fdisk.at/FDISK/schnittstellen/fdwebservice/export/fdexport.asmx"/> 
+</wsdl:port> -
+<wsdl:port name="FdExportSoap12" binding="tns:FdExportSoap12"> 
+<soap12:address location="https://app.fdisk.at/FDISK/schnittstellen/fdwebservice/export/fdexport.asmx"/> 
+</wsdl:port> 
+</wsdl:service> 
+</wsdl:definitions>

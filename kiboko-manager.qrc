@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>misc/beep-7.wav</file>
+        <file alias="flipdot1_default.bmp">misc/anzeige1.bmp</file>
+        <file alias="flipdot2_default.bmp">misc/anzeige2.bmp</file>
+        <file>misc/dingding.wav</file>
+        <file alias="documentation.pdf">misc/doku.pdf</file>
+        <file>misc/napf.wav</file>
+    </qresource>
+</RCC>
