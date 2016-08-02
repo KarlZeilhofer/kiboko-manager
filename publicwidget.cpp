@@ -92,6 +92,7 @@ void PublicWidget::oneSecondElapsed()
     else // countDownCounter=0
 	{
         startLabel->setText("Zille startet!");
+		MainWindow::app()->playStartSound();
 		timer.stop();
     }
 }

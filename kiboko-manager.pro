@@ -9,6 +9,11 @@ INCLUDEPATH += .
 
 QT	+= core gui network
 
+unix{
+	DEFINES += BUILDTIME=\\\"$$system(date '+%H:%M:%S')\\\"
+	DEFINES += BUILDDATE=\\\"$$system(date '+%d.%m.%Y')\\\"
+}
+
 # Input
 HEADERS += boat.h \
 	boatbox.h \

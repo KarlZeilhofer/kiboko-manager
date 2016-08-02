@@ -37,6 +37,13 @@ void TimeStampsTableWidget::init()
 	setColumnCount(3);
 	setRowCount(100);
 
+    setColumnWidth(0, 80);
+    setColumnWidth(1, 80);
+    setColumnWidth(2, 80);
+
+    resizeAllRows();
+
+
 	QStringList headers = QString("A. vor,Zeit,Quelle").split(',');
 	setHorizontalHeaderLabels(headers);
 	horizontalHeader()->setVisible(true);
@@ -55,6 +62,7 @@ void TimeStampsTableWidget::updateTimeStamp(TimeStamp* ts)
 	if(ts!=0){
 		//qDebug(QString(", ID = %1").arg(ts->getID()).toAscii());
 
+        // if TS is already assigned, remove it from the TS-list
 		//qDebug("to be removed?");
 		if(ts->getRunID() != 0 && idToRow.contains(ts->getID())){ // remove it from the table and the indices
 			//qDebug("    yes");
@@ -73,10 +81,13 @@ void TimeStampsTableWidget::updateTimeStamp(TimeStamp* ts)
 		}
 
 		//qDebug("to be inserted?");
+        // if TS is not in the list, and it has no Run assigned, insert it
 		if(!idToRow.contains(ts->getID()) && ts->getRunID()==0){ // insert it first
 			//qDebug("    yes");
 
 			setRowCount(idToRow.size()+2);
+            resizeAllRows();
+
 			int r=0;
 			while(rowToID.value(r, INT_MAX) < ts->getID() && r<(ts->getID()-1)){ // linear search // TODO: could be improved!
 				r++;
@@ -93,8 +104,12 @@ void TimeStampsTableWidget::updateTimeStamp(TimeStamp* ts)
 			idToRow.insert(ts->getID(),insertRow);
 			rowToID.insert(insertRow, ts->getID());
 
-			resizeRowsToContents();
-			resizeColumnsToContents();
+            // this costs a significant ammount of time, when loading a file!
+            // (26s without any improvements, 15s without resizing)
+            // SLOW_BUG
+//			resizeRowsToContents();
+//			resizeColumnsToContents();
+            // TODO: set column widths to fixed sizes
 		}else{
 			//qDebug("    no");
 		}
@@ -121,8 +136,9 @@ void TimeStampsTableWidget::updateTimeStamp(TimeStamp* ts)
 
 			//qDebug(QString("currentCell(%1,%2)").arg(currentRow()).arg(currentColumn()).toAscii());
 
-			resizeRowsToContents();
-			resizeColumnsToContents();
+            // SLOW_BUG
+//			resizeRowsToContents();
+//			resizeColumnsToContents();
 
 			printHashMaps();
 			return;
@@ -161,6 +177,7 @@ void TimeStampsTableWidget::regenerateList()
 
 	setRowCount(0); // clear rows
 	setRowCount(N+1); // keep last row empty
+    resizeAllRows();
 
 	for(int n=1; n<=N; n++)
 	{
@@ -173,6 +190,7 @@ void TimeStampsTableWidget::moveRowDown(int myRow)
 	//qDebug("moveRowDown(r)");
 	if(rowCount() < myRow+2){
 		setRowCount(myRow+2);
+        resizeAllRows();
 	}
 
 	//qDebug("    copy cells");
@@ -309,4 +327,15 @@ void TimeStampsTableWidget::setOnlineMode(bool online)
 void TimeStampsTableWidget::on_cellDoubleClicked(int /*row*/, int /*col*/)
 {
 	emit assign();
+}
+
+void TimeStampsTableWidget::resizeAllRows()
+{
+    // resize the row heights!
+    int height = 20;
+    verticalHeader()->setUpdatesEnabled(FALSE);
+    for (int i = 0; i < rowCount(); i++){
+        setRowHeight(i, height);
+    }
+    verticalHeader()->setUpdatesEnabled(TRUE);
 }

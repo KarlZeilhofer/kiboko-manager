@@ -13,11 +13,14 @@ class MainTableWidget : public QTableWidget
     Q_OBJECT
 public:
 	explicit MainTableWidget(QWidget *parent = 0);
+    ~MainTableWidget();
+
 
 private:
 	void resizeColumnsToContents(); // override function
-	QTimer updateTimer;
-	bool onlineMode;
+    void resizeAllRows();
+    QTimer updateTimer;
+    bool onlineMode;
 
 private slots:
 	void on_cellDoubleClicked(int row, int col);
@@ -41,7 +44,7 @@ public slots:
 public:
 	DialogVisibleColumns dialogVisibleColumns;
 	DialogEditNames dialogEditNames;
-	DialogEditTime dialogEditTime;
+    DialogEditTime dialogEditTime;
 };
 
 #endif // MAINTABLEWIDGET_H

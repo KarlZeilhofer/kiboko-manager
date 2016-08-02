@@ -14,10 +14,14 @@ DialogNewCompetition::DialogNewCompetition(QWidget *parent) :
 {
     ui->setupUi(this);
 	setModal(true);
+	
+	ui->spinBox_boatsPerRound->setMaximum(N_BOATBOXES-N_SPARE_BOATBOXES);
+	ui->spinBox_boatsPerRound->setValue(N_BOATBOXES-N_SPARE_BOATBOXES);
+	
     on_buttonBox_accepted();
 
 	ui->lineEdit_colors->setText(tr("rot blau grün"));
-	ui->plainTextEdit_description->appendPlainText(tr("Bewerbsvorlage mit 15 Zillen, 5 Ersatzzillen, den Farben rot blau und grün"));
+	ui->plainTextEdit_description->appendPlainText(tr("Bewerbsvorlage"));
 	ui->plainTextEdit_description->appendPlainText(tr("Datum: ") + QDate::currentDate().toString(tr("dd.MM.yyyy")));
     ui->plainTextEdit_description->appendPlainText(tr("Uhrzeit: ") + MainWindow::app()->getTimeBaseTime().toString(tr("hh:mm:ss")));
     ui->plainTextEdit_description->appendPlainText(tr("Computername: ") + QHostInfo::localHostName());

@@ -137,7 +137,7 @@ void DisplayRenderer::genMatrixData(QImage im, int displayNumber, uint8_t *data)
 		}
 	}
 	
-	/*
+
 	// export header file for display controller
 	QFile file("image.h");
 	if(!file.open(QFile::WriteOnly | QFile::Text))
@@ -174,7 +174,7 @@ void DisplayRenderer::genMatrixData(QImage im, int displayNumber, uint8_t *data)
 	
 	file.close();
 	
-	*/
+
 }
 
 void DisplayRenderer::sendDisplayData(QImage im1, QImage im2)

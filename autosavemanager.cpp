@@ -20,7 +20,7 @@ AutoSaveManager::AutoSaveManager(QObject *parent) :
 // it is called from the slot doAutoSave()
 void AutoSaveManager::save()
 {
-    QFileInfo currentFile = MainWindow::app()->currentFile;
+	QFileInfo currentFile = MainWindow::app()->getCurrentFile();
 
     // prepare the autosave-filename:
     QString path;

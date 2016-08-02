@@ -1,9 +1,9 @@
 #ifndef INFOSCREEN_H
 #define INFOSCREEN_H
 
-#include <QListWidget>
+#include <QTextEdit>
 
-class InfoScreen : public QListWidget
+class InfoScreen : public QTextEdit
 {
 	Q_OBJECT
 public:
@@ -15,6 +15,7 @@ public slots:
 	void appendInfo(QString text);
 	void appendWarning(QString text);
 	void appendError(QString text);
+	void writeLogFile();
 	
 private:
 	

@@ -25,6 +25,8 @@ public:
     ~DialogGeneralSettings();
 	int publishInterval();
     int startInterval();
+	bool soundOnTrigger();
+	bool soundOnStart();
 
 
 private:

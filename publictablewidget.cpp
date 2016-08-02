@@ -29,7 +29,7 @@ PublicTableWidget::PublicTableWidget(int numOfLines, QWidget *parent) :
 	// this works on Kubuntu but not on Ubuntu!
 	QPalette pal=palette();
 	//QColor(200, 113, 55)	// "Kiboko-brown"
-	pal.setColor(QPalette::AlternateBase, QColor(150, 150, 150));		
+	pal.setColor(QPalette::AlternateBase, QColor(150, 150, 150));
 	setPalette(pal);
 }
 
@@ -48,6 +48,8 @@ int PublicTableWidget::numOfRuns()
 
 void PublicTableWidget::regenerateTable()
 {
+	int lastFinishedRun=-1;
+	
     clearContents();
 //    qDebug("PublicTableWidget::regenerateTable()");
     // print all items in the table
@@ -104,11 +106,18 @@ void PublicTableWidget::regenerateTable()
             QString str;
             if(run->getStartTimeID()!=0 && run->getGoalTimeID()!=0 && run->getPublished())	// only for finished and published runs
             {
+				// run finished
                 QTime startTime = MainWindow::competition()->getTimeStamp(run->getStartTimeID())->getTime();
                 QTime goalTime = MainWindow::competition()->getTimeStamp(run->getGoalTimeID())->getTime();
                 QTime runTime;
                 runTime = runTime.addMSecs(startTime.msecsTo(goalTime)); // build difference
                 str = MainWindow::convertTimeToString(runTime);
+				
+				// find the last finished run (the first in the list of finished)
+				if(lastFinishedRun<0)
+				{
+					lastFinishedRun=n;
+				}
             }
             else if(run->getStartTimeID()!=0 && run->getGoalTimeID()!=0 && run->getPublished()==false)	// only for finished and not published runs
             {
@@ -130,7 +139,7 @@ void PublicTableWidget::regenerateTable()
             // Dsq
             if(run->getDSQ()){// show checkbox
                 item = getItem("  X  ");
-           }else{
+			}else{
                 item = getItem("");
             }
             item->setFlags(Qt::ItemIsEnabled);// set non-editable
@@ -143,6 +152,21 @@ void PublicTableWidget::regenerateTable()
             setItem(n, c++, item);
         }// end if(run)
     }// end for all runs
+	
+	
+	// highlight the last finished run
+	if(lastFinishedRun>=0 && lastFinishedRun<runs.length())
+	{
+		for(int c=0; c<columnCount(); c++)
+		{
+			QTableWidgetItem* tableItem=item(lastFinishedRun, c);
+			if(tableItem!=0)
+			{
+				tableItem->setBackgroundColor(QColor(Qt::green).lighter());
+			}
+		}
+		
+	}
 
     resizeColumnsToContents();
     resizeRowsToContents();

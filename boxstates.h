@@ -93,6 +93,7 @@ public:
 		QTime lastAliveTime;	// time of the last packet received from this box
 		double voltage;			// in V, battery voltage
 		bool lowVoltage;
+		QTime lowVoltageSince;
 		bool absent;
 
         QLabel txtBaseTime;
@@ -108,6 +109,7 @@ public:
 		QTime triggerTimeL;		// time of last trigger on the left side
 		QTime triggerTimeR;		// time of last trigger on the right side
 		bool lowVoltage;
+		QTime lowVoltageSince;
 		bool absent;
 
         QLabel txtVoltage;
@@ -121,6 +123,7 @@ public:
 		double rssi;			// in dBm, RSSI value of 433MHz connection to timebase 
 		double voltage;			// in V, battery voltage (this is a 12V AGM Pb battery)
 		bool lowVoltage;
+		QTime lowVoltageSince;
 		bool absent;
 
         QLabel txtVoltage;
@@ -136,6 +139,7 @@ public:
 
 		double voltage;			// in V, battery voltage
 		bool lowVoltage;
+		QTime lowVoltageSince;
 		
 		QList<QTime> recentTriggerTimes;					// last time the boatbox detected a trigger signal
 		TimeStamp::Source triggerSource;	// source of last trigger signal 

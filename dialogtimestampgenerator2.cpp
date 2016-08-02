@@ -1,5 +1,6 @@
 #include "dialogtimestampgenerator2.h"
 #include "ui_dialogtimestampgenerator2.h"
+#include "defs.h"
 
 #include "crc8.h"
 #include <QtNetwork>
@@ -15,7 +16,7 @@ DialogTimeStampGenerator2::DialogTimeStampGenerator2(QWidget *parent) :
 	ui->comboBox_triggerStationID->addItem("Start-Box", 1);
 	ui->comboBox_triggerStationID->addItem("Ziel-Box", 2);
 
-	for(int n=1; n<=20; n++)
+	for(int n=1; n<=N_BOATBOXES; n++)
 	{
 		ui->comboBox_boatBoxID->addItem(QString("BB%1").arg(n), n);
 	}

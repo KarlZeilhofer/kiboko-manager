@@ -5,6 +5,8 @@
 #include <QTimer>
 #include <QTime>
 #include <timestamp.h>
+#include <defs.h>
+
 
 namespace Ui {
     class DialogBindBoatBox;
@@ -15,7 +17,7 @@ class DialogBindBoatBox : public QDialog
     Q_OBJECT
 
 public:
-	explicit DialogBindBoatBox(QWidget *parent = 0, int numOfBoatsPerRound = 15, int numOfReplacementBoats = 5);
+	explicit DialogBindBoatBox(QWidget *parent = 0, int numOfBoatsPerRound = N_BOATBOXES-N_SPARE_BOATBOXES, int numOfReplacementBoats = N_SPARE_BOATBOXES);
     ~DialogBindBoatBox();
 
 	int getSelectedBoatId();

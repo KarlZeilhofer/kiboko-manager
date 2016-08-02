@@ -9,6 +9,7 @@
 #define VOLTAGE_WARNING_LEVEL	20		// %
 #define VOLTAGE_WARNING_HYST	1		// %
 #define ABSENT_WARNING_LEVEL	20000	// ms
+#define LOW_VOLTAGE_TIMEOUT		10		// s
 
 
 BoxStates::BoxStates(QObject *parent) :
@@ -23,8 +24,23 @@ BoxStates::BoxStates(QObject *parent) :
 	triggerStationState[GOAL].absent=true;
 	matrixDisplayState[1].absent=true;
 	matrixDisplayState[2].absent=true;
-
-    // firstTimeBaseTimeReceived // leave it invalid
+	
+	timeBaseState.lowVoltageSince=QTime();
+	timeBaseState.lowVoltage=false;
+	triggerStationState[START].lowVoltageSince=QTime();
+	triggerStationState[START].lowVoltage=false;
+	triggerStationState[GOAL].lowVoltageSince=QTime();
+	triggerStationState[GOAL].lowVoltage=false;
+	matrixDisplayState[1].lowVoltageSince=QTime();
+	matrixDisplayState[1].lowVoltage=false;
+	matrixDisplayState[2].lowVoltageSince=QTime();
+	matrixDisplayState[2].lowVoltage=false;
+	
+	for(int i=1; i<=N_BOATBOXES; i++)
+	{
+		boatBoxState[i].lowVoltageSince=QTime();
+		boatBoxState[i].lowVoltage=false;
+	}
 }
 
 
@@ -49,20 +65,32 @@ void BoxStates::setTimeBaseTime(QTime baseTime)
 void BoxStates::setTimeBaseVoltage(double voltage)
 {
     timeBaseState.lastAliveTime=MainWindow::app()->getTimeBaseTime();
+	
+	if(!timeBaseState.lowVoltageSince.isValid())
+	{
+		timeBaseState.lowVoltageSince=MainWindow::app()->getTimeBaseTime();
+	}
+	
 	if(voltage!=timeBaseState.voltage)
 	{
 		timeBaseState.voltage=voltage;
         timeBaseState.txtVoltage.setText(QString("%1%").arg(QString::number(100*voltageToBatteryState(voltage), 'f', 0)));
 		
 		// check voltage
-		if(100*voltageToBatteryState(voltage)<VOLTAGE_WARNING_LEVEL-VOLTAGE_WARNING_HYST && !timeBaseState.lowVoltage)
+		if(100*voltageToBatteryState(voltage)<VOLTAGE_WARNING_LEVEL-VOLTAGE_WARNING_HYST)
 		{
-			timeBaseState.lowVoltage=true;
-			MainWindow::app()->infoscreen()->appendWarning(tr("Akkustand der Zeitbasis kritisch"));
+			// voltage too low
+			if(timeBaseState.lowVoltageSince.secsTo(MainWindow::app()->getTimeBaseTime()) > LOW_VOLTAGE_TIMEOUT && !timeBaseState.lowVoltage)
+			{
+				timeBaseState.lowVoltage=true;
+				MainWindow::app()->infoscreen()->appendWarning(tr("Akkustand der Zeitbasis kritisch"));
+			}
 		}
 		if(100*voltageToBatteryState(voltage)>VOLTAGE_WARNING_LEVEL+VOLTAGE_WARNING_HYST)
 		{
+			// voltage OK
 			timeBaseState.lowVoltage=false;
+			timeBaseState.lowVoltageSince=MainWindow::app()->getTimeBaseTime();
 		}
 	}
 }
@@ -70,27 +98,39 @@ void BoxStates::setTimeBaseVoltage(double voltage)
 void BoxStates::setTriggerStationVoltage(BoxStates::Station s, double voltage)
 {
     triggerStationState[s].lastAliveTime=MainWindow::app()->getTimeBaseTime();
+	
+	if(!triggerStationState[s].lowVoltageSince.isValid())
+	{
+		triggerStationState[s].lowVoltageSince=MainWindow::app()->getTimeBaseTime();
+	}
+	
 	if(voltage!=triggerStationState[s].voltage)
 	{
 		triggerStationState[s].voltage=voltage;
         triggerStationState[s].txtVoltage.setText(QString("%1%").arg(QString::number(100*voltageToBatteryState(voltage), 'f', 0)));
 		
 		// check voltage
-		if(100*voltageToBatteryState(voltage)<VOLTAGE_WARNING_LEVEL-VOLTAGE_WARNING_HYST && !triggerStationState[s].lowVoltage)
+		if(100*voltageToBatteryState(voltage)<VOLTAGE_WARNING_LEVEL-VOLTAGE_WARNING_HYST)
 		{
-			triggerStationState[s].lowVoltage=true;
-			if(s==START)
+			// voltage too low
+			if(triggerStationState[s].lowVoltageSince.secsTo(MainWindow::app()->getTimeBaseTime()) > LOW_VOLTAGE_TIMEOUT && !triggerStationState[s].lowVoltage)
 			{
-				MainWindow::app()->infoscreen()->appendWarning(tr("Akkustand der Startbox kritisch"));
-			}
-			else
-			{
-				MainWindow::app()->infoscreen()->appendWarning(tr("Akkustand der Zielbox kritisch"));
+				triggerStationState[s].lowVoltage=true;
+				if(s==START)
+				{
+					MainWindow::app()->infoscreen()->appendWarning(tr("Akkustand der Startbox kritisch"));
+				}
+				else
+				{
+					MainWindow::app()->infoscreen()->appendWarning(tr("Akkustand der Zielbox kritisch"));
+				}
 			}
 		}
 		if(100*voltageToBatteryState(voltage)>VOLTAGE_WARNING_LEVEL+VOLTAGE_WARNING_HYST)
 		{
+			// voltage OK
 			triggerStationState[s].lowVoltage=false;
+			triggerStationState[s].lowVoltageSince=MainWindow::app()->getTimeBaseTime();
 		}
 	}
 }
@@ -99,6 +139,12 @@ void BoxStates::setTriggerStationVoltage(BoxStates::Station s, double voltage)
 void BoxStates::setMatrixDisplayVoltage(int display, double voltage)
 {
     matrixDisplayState[display].lastAliveTime=MainWindow::app()->getTimeBaseTime();
+	
+	if(!matrixDisplayState[display].lowVoltageSince.isValid())
+	{
+		matrixDisplayState[display].lowVoltageSince=MainWindow::app()->getTimeBaseTime();
+	}
+	
 	if(voltage!=matrixDisplayState[display].voltage)
 	{
 		matrixDisplayState[display].voltage=voltage;
@@ -107,14 +153,20 @@ void BoxStates::setMatrixDisplayVoltage(int display, double voltage)
 		//qDebug() << "Matrix Display Voltage: " << voltage;
 		
 		// check voltage
-		if(100*voltageToBatteryStatePb(voltage)<VOLTAGE_WARNING_LEVEL-VOLTAGE_WARNING_HYST && !matrixDisplayState[display].lowVoltage)
+		if(100*voltageToBatteryStatePb(voltage)<VOLTAGE_WARNING_LEVEL-VOLTAGE_WARNING_HYST)
 		{
-			matrixDisplayState[display].lowVoltage=true;
-			MainWindow::app()->infoscreen()->appendWarning(tr("Akkustand der Kiboko Matrix %1 kritisch").arg(display));
+			// voltage too low
+			if(matrixDisplayState[display].lowVoltageSince.secsTo(MainWindow::app()->getTimeBaseTime()) > LOW_VOLTAGE_TIMEOUT && !matrixDisplayState[display].lowVoltage)
+			{
+				matrixDisplayState[display].lowVoltage=true;
+				MainWindow::app()->infoscreen()->appendWarning(tr("Akkustand der Kiboko Matrix %1 kritisch").arg(display));
+			}
 		}
 		if(100*voltageToBatteryStatePb(voltage)>VOLTAGE_WARNING_LEVEL+VOLTAGE_WARNING_HYST)
 		{
+			// voltage OK
 			matrixDisplayState[display].lowVoltage=false;
+			matrixDisplayState[display].lowVoltageSince=MainWindow::app()->getTimeBaseTime();
 		}
 	}
 }
@@ -122,20 +174,32 @@ void BoxStates::setMatrixDisplayVoltage(int display, double voltage)
 void BoxStates::setBoatBoxVoltage(int ID, BoxStates::Station s, double voltage)
 {
     boatBoxState[ID].lastAliveTime[s]=MainWindow::app()->getTimeBaseTime();
+	
+	if(!boatBoxState[ID].lowVoltageSince.isValid())
+	{
+		boatBoxState[ID].lowVoltageSince=MainWindow::app()->getTimeBaseTime();
+	}
+	
     if(voltage!=boatBoxState[ID].voltage)
 	{
         boatBoxState[ID].voltage=voltage;
         boatBoxState[ID].txtVoltage.setText(QString("%1%").arg(QString::number(100*voltageToBatteryState(voltage), 'f', 0)));
 		
 		// check voltage
-		if(100*voltageToBatteryState(voltage)<VOLTAGE_WARNING_LEVEL-VOLTAGE_WARNING_HYST && !boatBoxState[ID].lowVoltage)
+		if(100*voltageToBatteryState(voltage)<VOLTAGE_WARNING_LEVEL-VOLTAGE_WARNING_HYST)
 		{
-			boatBoxState[ID].lowVoltage=true;
-			MainWindow::app()->infoscreen()->appendWarning(tr("Akkustand von BoatBox %1 kritisch").arg(ID));
+			// voltage too low
+			if(boatBoxState[ID].lowVoltageSince.secsTo(MainWindow::app()->getTimeBaseTime()) > LOW_VOLTAGE_TIMEOUT && !boatBoxState[ID].lowVoltage)
+			{
+				boatBoxState[ID].lowVoltage=true;
+				MainWindow::app()->infoscreen()->appendWarning(tr("Akkustand von BoatBox %1 kritisch").arg(ID));
+			}
 		}
 		if(100*voltageToBatteryState(voltage)>VOLTAGE_WARNING_LEVEL+VOLTAGE_WARNING_HYST)
 		{
+			// voltage OK
 			boatBoxState[ID].lowVoltage=false;
+			boatBoxState[ID].lowVoltageSince=MainWindow::app()->getTimeBaseTime();
 		}
 	}
 }
@@ -180,7 +244,13 @@ void BoxStates::setTsTriggerTimeL(BoxStates::Station s, QTime time)
 {
     triggerStationState[s].lastAliveTime=MainWindow::app()->getTimeBaseTime();
 	
-    if(time!=triggerStationState[s].triggerTimeL) // block repeated time stamps received from the baotbox
+	if(time > MainWindow::app()->getTimeBaseTime().addSecs(10))
+	{
+		qDebug() << "received timestamp from future!";
+		return;
+	}
+	
+    if(time!=triggerStationState[s].triggerTimeL) // block repeated time stamps received from the boatbox
 	{
 		triggerStationState[s].triggerTimeL=time;
 		
@@ -199,6 +269,12 @@ void BoxStates::setTsTriggerTimeL(BoxStates::Station s, QTime time)
 void BoxStates::setTsTriggerTimeR(Station s, QTime time)
 {
     triggerStationState[s].lastAliveTime=MainWindow::app()->getTimeBaseTime();
+	
+	if(time > MainWindow::app()->getTimeBaseTime().addSecs(10))
+	{
+		qDebug() << "received timestamp from future!";
+		return;
+	}
 	
 	if(time!=triggerStationState[s].triggerTimeR)
 	{
@@ -219,6 +295,12 @@ void BoxStates::setTsTriggerTimeR(Station s, QTime time)
 void BoxStates::setBoatBoxTriggerTime(int ID, Station s, QTime time, TimeStamp::Source source)
 {
     boatBoxState[ID].lastAliveTime[s]=MainWindow::app()->getTimeBaseTime();
+	
+	if(time > MainWindow::app()->getTimeBaseTime().addSecs(10))
+	{
+		qDebug() << "received timestamp from future!";
+		return;
+	}
 	
 	// check, if this time-stamp wasn't received recently
 	if(!boatBoxState[ID].recentTriggerTimes.contains(time))

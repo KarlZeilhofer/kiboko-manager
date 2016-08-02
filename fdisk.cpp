@@ -9,6 +9,7 @@
 
 #include <QDebug>
 #include <QDir>
+#include <QMetaObject>
 
 #include "competition.h"
 #include "mainwindow.h"
@@ -24,13 +25,14 @@ void Fdisk::run()
 	try
 	{
 		Competition* comp=MainWindow::competition();
-		
+	
 		if(comp->getDatabaseName().isEmpty())
 		{
 			return;
 		}
 		
-		MainWindow::app()->infoscreen()->appendInfo("FDISK-Daten werden gelesen...");
+		//MainWindow::app()->infoscreen()->appendInfo("FDISK-Daten werden gelesen...");
+		QMetaObject::invokeMethod(MainWindow::app()->infoscreen(), "appendInfo", Qt::QueuedConnection, Q_ARG(QString, tr("FDISK-Daten werden gelesen...")));
 		
 		std::auto_ptr< ::FdExport > pFdExport(::staff::ServiceFactory::Inst().GetService< ::FdExport >());
 		
@@ -157,7 +159,8 @@ void Fdisk::run()
 			}
 		}
 		
-		MainWindow::app()->infoscreen()->appendInfo(tr("FDISK-Daten wurden erfolgreich gelesen"));
+		//MainWindow::app()->infoscreen()->appendInfo(tr("FDISK-Daten wurden erfolgreich gelesen"));
+		QMetaObject::invokeMethod(MainWindow::app()->infoscreen(), "appendInfo", Qt::QueuedConnection, Q_ARG(QString, tr("FDISK-Daten wurden erfolgreich gelesen")));
 		
 		
 		pFdExport->closeSession(md5session);
@@ -165,7 +168,8 @@ void Fdisk::run()
 	}
 	catch(...)
 	{
-		MainWindow::app()->infoscreen()->appendError(tr("FDISK-Daten konnten nicht gelesen werden"));
+		//MainWindow::app()->infoscreen()->appendError(tr("FDISK-Daten konnten nicht gelesen werden"));
+		QMetaObject::invokeMethod(MainWindow::app()->infoscreen(), "appendError", Qt::QueuedConnection, Q_ARG(QString, tr("FDISK-Daten konnten nicht gelesen werden")));
 	}
 
 	//STAFF_CATCH_ALL

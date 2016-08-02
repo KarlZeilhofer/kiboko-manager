@@ -29,7 +29,7 @@
        </attribute>
        <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,0">
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_2">
+         <layout class="QVBoxLayout" name="verticalLayout_2" stretch="1,0,0">
           <item>
            <widget class="MainTableWidget" name="tableWidget_main">
             <property name="sizePolicy">
@@ -403,54 +403,6 @@
               </layout>
              </widget>
             </item>
-            <item row="0" column="1" rowspan="2">
-             <widget class="QGroupBox" name="groupBox_notifications">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>100</height>
-               </size>
-              </property>
-              <property name="title">
-               <string>Meldungen</string>
-              </property>
-              <layout class="QGridLayout" name="gridLayout_5">
-               <item row="0" column="0">
-                <widget class="InfoScreen" name="infoscreen">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>16777215</width>
-                   <height>100</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <pointsize>12</pointsize>
-                   <weight>75</weight>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <item>
-                  <property name="text">
-                   <string>Testnachricht: Fehler im System</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>Neuer Teilnehmer</string>
-                  </property>
-                 </item>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
             <item row="1" column="0">
              <widget class="QGroupBox" name="groupBox">
               <property name="title">
@@ -538,6 +490,31 @@
                  <attribute name="buttonGroup">
                   <string notr="true">buttonGroup</string>
                  </attribute>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="0" column="1" rowspan="2">
+             <widget class="QGroupBox" name="groupBox_notifications">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>100</height>
+               </size>
+              </property>
+              <property name="title">
+               <string>Meldungen</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_5">
+               <item row="0" column="0">
+                <widget class="InfoScreen" name="infoscreen">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                 </widget>
                </item>
               </layout>
@@ -717,8 +694,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>1251</width>
-             <height>567</height>
+             <width>98</width>
+             <height>28</height>
             </rect>
            </property>
           </widget>
@@ -766,6 +743,7 @@
      <string>System</string>
     </property>
     <addaction name="actionShowTimeBaseDialog"/>
+    <addaction name="actionSetupPublicWidget"/>
     <addaction name="actionReadFdiskData"/>
    </widget>
    <widget class="QMenu" name="menuSettings">
@@ -774,9 +752,7 @@
     </property>
     <addaction name="actionShowGeneralSettings"/>
     <addaction name="actionShowDisplaySettings"/>
-    <addaction name="actionGlobalSoundOnOff"/>
     <addaction name="actionShowColumnsSettings"/>
-    <addaction name="actionMaximicePublicWidget"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -948,9 +924,9 @@
     <string>Publish all</string>
    </property>
   </action>
-  <action name="actionMaximicePublicWidget">
+  <action name="actionSetupPublicWidget">
    <property name="text">
-    <string>Außenmonitor maximieren</string>
+    <string>Außenmonitor aktivieren</string>
    </property>
   </action>
   <action name="actionCSV_Upload_Command">
@@ -999,15 +975,15 @@
    <header>maintablewidget.h</header>
   </customwidget>
   <customwidget>
-   <class>InfoScreen</class>
-   <extends>QListWidget</extends>
-   <header>infoscreen.h</header>
-  </customwidget>
-  <customwidget>
    <class>PublicWidget</class>
    <extends>QWidget</extends>
    <header>publicwidget.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>InfoScreen</class>
+   <extends>QTextEdit</extends>
+   <header>infoscreen.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

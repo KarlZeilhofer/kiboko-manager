@@ -71,6 +71,18 @@ int DialogGeneralSettings::startInterval()
 }
 
 
+bool DialogGeneralSettings::soundOnTrigger()
+{
+	return ui->checkBox_soundOnTrigger->isChecked();
+}
+
+
+bool DialogGeneralSettings::soundOnStart()
+{
+	return ui->checkBox_soundOnStart->isChecked();
+}
+
+
 void DialogGeneralSettings::on_radioButton_assignOnlyForward_toggled(bool checked)
 {
     QSettings set;

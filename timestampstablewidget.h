@@ -13,12 +13,13 @@ class TimeStampsTableWidget : public QTableWidget
 public:
 	explicit TimeStampsTableWidget(QWidget *parent = 0);
 	void init();
-	int getSelectedID(); // returns 0, if none selected
+    int getSelectedID(); // returns 0, if none selected
 
 private:
 	void moveRowDown(int row);
 	void moveRowUp(int row);
 	void printHashMaps();
+    void resizeAllRows();
 
 
 public slots:

@@ -4,7 +4,9 @@
 #include "dialogvisiblecolumns.h"
 #include <QHeaderView>
 #include <algorithm>
+#include <QSettings>
 
+#define SS_MAIN_TABLE_COL_WIDTHS "ColumnWidths"
 
 MainTableWidget::MainTableWidget(QWidget *parent) :
 	QTableWidget(parent)
@@ -39,9 +41,19 @@ MainTableWidget::MainTableWidget(QWidget *parent) :
 	setSelectionMode(QAbstractItemView::SingleSelection);
 	setEditTriggers(QAbstractItemView::NoEditTriggers);
 	
-	
-	resizeColumnsToContents();
-	resizeRowsToContents();
+    QSettings set;
+    QList<QVariant> defaultWidths = QList<QVariant>()<<50<<50<<50<<50<<50<<50<<50<<50<<50<<50<<50<<50<<50<<50;
+    QList<QVariant> colWidths = set.value(SS_MAIN_TABLE_COL_WIDTHS,QVariant(defaultWidths)).toList();
+
+    for(int n=0; n<colWidths.size(); n++){
+        bool ok;
+        int w = colWidths.at(n).toInt(&ok);
+        if(ok){
+            setColumnWidth(n, w);
+        }else{
+            qDebug() << "Error on converting QVariant for ColumnWidth in MainTableWidget.cpp";
+        }
+    }
 	clearContents();
 	
 	
@@ -71,6 +83,17 @@ MainTableWidget::MainTableWidget(QWidget *parent) :
 	onlineMode=true;
 	
 	//setAlternatingRowColors(true); this does not work!?
+}
+
+MainTableWidget::~MainTableWidget()
+{
+    QList<QVariant> colWidths;
+    QSettings set;
+
+    for(int n=0; n<columnCount(); n++){
+        colWidths.append(columnWidth(n));
+    }
+    set.setValue(SS_MAIN_TABLE_COL_WIDTHS,colWidths);
 }
 
 // update all cells of a row in the main-table
@@ -229,8 +252,8 @@ void MainTableWidget::updateTableRow(RunData* run)
 				setItem(run->getID()-1, n, item);
 			}
 		}
-        resizeColumnsToContents();
-        resizeRowToContents(run->getID()-1);
+        //resizeColumnsToContents();
+        //resizeRowToContents(run->getID()-1);
     }
 }
 
@@ -283,8 +306,9 @@ void MainTableWidget::regenerateTable()
 		updateTableRow(MainWindow::competition()->getRun(n));
 	}
 	
-	resizeColumnsToContents();
-	resizeRowsToContents();
+    //resizeColumnsToContents();
+    resizeAllRows();
+    //resizeRowsToContents();
     setCurrentCell(currentRowBackup, currentColumnBackup);
 }
 
@@ -418,7 +442,8 @@ void MainTableWidget::resizeColumnsToContents() // override function
 {
 	QTableWidget::resizeColumnsToContents(); // call super-class' function
 	// check for minimal column widths:
-	int i = dialogVisibleColumns.columnIndex(DialogVisibleColumns::CT_StartTime);
+    int i;
+    i = dialogVisibleColumns.columnIndex(DialogVisibleColumns::CT_StartTime);
 	setColumnWidth(i, std::max(125, columnWidth(i)));
 	i = dialogVisibleColumns.columnIndex(DialogVisibleColumns::CT_GoalTime);
 	setColumnWidth(i, std::max(125, columnWidth(i)));
@@ -452,3 +477,15 @@ void MainTableWidget::setOnlineMode(bool online)
 {
 	onlineMode=online;
 }
+
+void MainTableWidget::resizeAllRows()
+{
+    // resize the row heights!
+    int height = 20;
+    verticalHeader()->setUpdatesEnabled(FALSE);
+    for (int i = 0; i < rowCount(); i++){
+        setRowHeight(i, height);
+    }
+    verticalHeader()->setUpdatesEnabled(TRUE);
+}
+

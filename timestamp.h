@@ -60,7 +60,7 @@ private:
 	QTime time;
 	Source source;
 	int runID;
-	int boatboxID; // 1,...,20, ID of the hardware box
+	int boatboxID; // 1,...,N_BOATBOXES, ID of the hardware box
 	int boatID; // typ. 1,...,15, ID of the referenced boatnumber in the main table
 	QString boatName; // typ. 1,...,15,A,B,C,...
 };

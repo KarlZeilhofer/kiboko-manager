@@ -2,6 +2,7 @@
 #include "ui_dialogtimestampgenerator.h"
 #include "timestamp.h"
 #include "mainwindow.h"
+#include "defs.h"
 
 DialogTimeStampGenerator::DialogTimeStampGenerator(QWidget *parent) :
     QDialog(parent),
@@ -17,7 +18,7 @@ DialogTimeStampGenerator::DialogTimeStampGenerator(QWidget *parent) :
 		ui->comboBox_source->addItem(s.at(n));
 	}
 
-	for(int n=0; n<20; n++){
+	for(int n=0; n<N_BOATBOXES; n++){
 		ui->comboBox_boatID->addItem(QString::number(n+1));
 	}
 }

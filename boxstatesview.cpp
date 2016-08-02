@@ -10,8 +10,14 @@ BoxStatesView::BoxStatesView( BoxStates* bs, QWidget *parent) :
 
     // generate the layout:
     QGridLayout* l = new QGridLayout(this);
+	l->setSpacing(0);	// remove spacing between widgets
+	
+	QString lightStyle=QString("QLabel { background-color : white; }");
+	QString darkStyle=QString("QLabel { background-color : lightgray; }");
+
 
 	int r0 = 0;
+	QString style=darkStyle;
 
     // Zeitbasis:
     topHeadings.append(new QLabel(tr("Basiszeit")));
@@ -22,15 +28,25 @@ BoxStatesView::BoxStatesView( BoxStates* bs, QWidget *parent) :
 	l->addWidget(topHeadings.last(), r0, 3);
 
     leftHeadings.append(new QLabel(tr("Zeitbasis")));
+	leftHeadings.last()->setStyleSheet(style);
 	l->addWidget(leftHeadings.last(), r0+1,0);
 
     entries.append(&(bs->timeBaseState.txtBaseTime));
+	entries.last()->setStyleSheet(style);
 	l->addWidget(entries.last(), r0+1,1);
     entries.append(&(bs->timeBaseState.txtVoltage));
+	entries.last()->setStyleSheet(style);
 	l->addWidget(entries.last(), r0+1,2);
     entries.append(&(bs->timeBaseState.txtAbsentSince));
+	entries.last()->setStyleSheet(style);
 	l->addWidget(entries.last(), r0+1,3);
-
+	
+	l->addWidget(new QLabel(), r0+1,4);
+	l->itemAtPosition(r0+1,4)->widget()->setStyleSheet(darkStyle);
+	l->addWidget(new QLabel(), r0+1,5);
+	l->itemAtPosition(r0+1,5)->widget()->setStyleSheet(darkStyle);
+	l->addWidget(new QLabel(), r0+1,6);
+	l->itemAtPosition(r0+1,6)->widget()->setStyleSheet(darkStyle);
 
 	r0 = 2;
 
@@ -43,24 +59,46 @@ BoxStatesView::BoxStatesView( BoxStates* bs, QWidget *parent) :
 	l->addWidget(topHeadings.last(), r0, 4);
 
     leftHeadings.append(new QLabel(tr("Start")));
+	leftHeadings.last()->setStyleSheet(style);
 	l->addWidget(leftHeadings.last(), r0+1,0);
     leftHeadings.append(new QLabel(tr("Ziel")));
+	leftHeadings.last()->setStyleSheet(style);
 	l->addWidget(leftHeadings.last(), r0+2,0);
+	
 
     int id=BoxStates::START;
+	l->addWidget(new QLabel(), r0+1,1);
+	l->itemAtPosition(r0+1,1)->widget()->setStyleSheet(darkStyle);
     entries.append(&(bs->triggerStationState[id].txtVoltage));
+	entries.last()->setStyleSheet(style);
 	l->addWidget(entries.last(), r0+1,2);
     entries.append(&(bs->triggerStationState[id].txtSignalStrength));
+	entries.last()->setStyleSheet(style);
 	l->addWidget(entries.last(), r0+1,3);
     entries.append(&(bs->triggerStationState[id].txtAbsentSince));
+	entries.last()->setStyleSheet(style);
 	l->addWidget(entries.last(), r0+1,4);
+	l->addWidget(new QLabel(), r0+1,5);
+	l->itemAtPosition(r0+1,5)->widget()->setStyleSheet(darkStyle);
+	l->addWidget(new QLabel(), r0+1,6);
+	l->itemAtPosition(r0+1,6)->widget()->setStyleSheet(darkStyle);
+	
     id=BoxStates::GOAL;
+	l->addWidget(new QLabel(), r0+2,1);
+	l->itemAtPosition(r0+2,1)->widget()->setStyleSheet(darkStyle);
     entries.append(&(bs->triggerStationState[id].txtVoltage));
+	entries.last()->setStyleSheet(style);
 	l->addWidget(entries.last(), r0+2,2);
     entries.append(&(bs->triggerStationState[id].txtSignalStrength));
+	entries.last()->setStyleSheet(style);
 	l->addWidget(entries.last(), r0+2,3);
     entries.append(&(bs->triggerStationState[id].txtAbsentSince));
+	entries.last()->setStyleSheet(style);
 	l->addWidget(entries.last(), r0+2,4);
+	l->addWidget(new QLabel(), r0+2,5);
+	l->itemAtPosition(r0+2,5)->widget()->setStyleSheet(darkStyle);
+	l->addWidget(new QLabel(), r0+2,6);
+	l->itemAtPosition(r0+2,6)->widget()->setStyleSheet(darkStyle);
 	
 
 	r0 = 5;
@@ -74,24 +112,45 @@ BoxStatesView::BoxStatesView( BoxStates* bs, QWidget *parent) :
 	l->addWidget(topHeadings.last(), r0, 4);
 
     leftHeadings.append(new QLabel(tr("Kiboko Matrix 1")));
+	leftHeadings.last()->setStyleSheet(style);
 	l->addWidget(leftHeadings.last(), r0+1,0);
     leftHeadings.append(new QLabel(tr("Kiboko Matrix 2")));
+	leftHeadings.last()->setStyleSheet(style);
 	l->addWidget(leftHeadings.last(), r0+2,0);
 
     int d=1;
+	l->addWidget(new QLabel(), r0+1,1);
+	l->itemAtPosition(r0+1,1)->widget()->setStyleSheet(darkStyle);
     entries.append(&(bs->matrixDisplayState[d].txtVoltage));
+	entries.last()->setStyleSheet(style);
 	l->addWidget(entries.last(), r0+1,2);
     entries.append(&(bs->matrixDisplayState[d].txtSignalStrength));
+	entries.last()->setStyleSheet(style);
 	l->addWidget(entries.last(), r0+1,3);
     entries.append(&(bs->matrixDisplayState[d].txtAbsentSince));
+	entries.last()->setStyleSheet(style);
 	l->addWidget(entries.last(), r0+1,4);
+	l->addWidget(new QLabel(), r0+1,5);
+	l->itemAtPosition(r0+1,5)->widget()->setStyleSheet(darkStyle);
+	l->addWidget(new QLabel(), r0+1,6);
+	l->itemAtPosition(r0+1,6)->widget()->setStyleSheet(darkStyle);
+	
     d=2;
+	l->addWidget(new QLabel(), r0+2,1);
+	l->itemAtPosition(r0+2,1)->widget()->setStyleSheet(darkStyle);
     entries.append(&(bs->matrixDisplayState[d].txtVoltage));
+	entries.last()->setStyleSheet(style);
 	l->addWidget(entries.last(), r0+2,2);
     entries.append(&(bs->matrixDisplayState[d].txtSignalStrength));
+	entries.last()->setStyleSheet(style);
 	l->addWidget(entries.last(), r0+2,3);
     entries.append(&(bs->matrixDisplayState[d].txtAbsentSince));
+	entries.last()->setStyleSheet(style);
 	l->addWidget(entries.last(), r0+2,4);
+	l->addWidget(new QLabel(), r0+2,5);
+	l->itemAtPosition(r0+2,5)->widget()->setStyleSheet(darkStyle);
+	l->addWidget(new QLabel(), r0+2,6);
+	l->itemAtPosition(r0+2,6)->widget()->setStyleSheet(darkStyle);
 
 	
 	r0 = 8;
@@ -110,21 +169,39 @@ BoxStatesView::BoxStatesView( BoxStates* bs, QWidget *parent) :
     topHeadings.append(new QLabel(tr("Letzte Nachricht\nüber Ziel vor")));
 	l->addWidget(topHeadings.last(), r0, 6);
 
-    for(int id=1; id<=N_BOATBOXES; id++){
+    for(int id=1; id<=N_BOATBOXES; id++)
+	{
+		QString style;
+		if(id%2==0)
+		{
+			style=lightStyle;
+		}
+		else
+		{
+			style=darkStyle;
+		}
+		
         leftHeadings.append(new QLabel(QString(tr("Boat-Box "))+QString::number(id)));
+		leftHeadings.last()->setStyleSheet(style);
 		l->addWidget(leftHeadings.last(), r0+id,0);
 
         entries.append(&(bs->boatBoxState[id].txtBoatName));
+		entries.last()->setStyleSheet(style);
 		l->addWidget(entries.last(), r0+id,1);
         entries.append(&(bs->boatBoxState[id].txtVoltage));
+		entries.last()->setStyleSheet(style);
 		l->addWidget(entries.last(), r0+id,2);
         entries.append(&(bs->boatBoxState[id].txtSignalStrength[BoxStates::START]));
+		entries.last()->setStyleSheet(style);
 		l->addWidget(entries.last(), r0+id,3);
         entries.append(&(bs->boatBoxState[id].txtAbsentSince[BoxStates::START]));
+		entries.last()->setStyleSheet(style);
 		l->addWidget(entries.last(), r0+id,4);
         entries.append(&(bs->boatBoxState[id].txtSignalStrength[BoxStates::GOAL]));
+		entries.last()->setStyleSheet(style);
 		l->addWidget(entries.last(), r0+id,5);
         entries.append(&(bs->boatBoxState[id].txtAbsentSince[BoxStates::GOAL]));
+		entries.last()->setStyleSheet(style);
 		l->addWidget(entries.last(), r0+id,6);
     }
 

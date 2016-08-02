@@ -52,9 +52,13 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
 	ui(new Ui::MainWindow)
 {
+	setWindowIcon(QIcon(QCoreApplication::applicationDirPath()+"/misc/kiboko-logo.svg"));
+	
     QSettings set;
     myMainWindow = this;
     localTimeOffset_ms = 0;
+	
+	startUpTime=QDateTime::currentDateTime();
 
     ui->setupUi(this);
 
@@ -71,6 +75,8 @@ MainWindow::MainWindow(QWidget *parent) :
     myCompetition=0;
     publisher=0;
     udpSocket = 0;
+	
+	initTimeBaseListener();
 
 
     boxStatesView = new BoxStatesView(&boxStates, 0);
@@ -122,7 +128,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QRect screenres = QApplication::desktop()->screenGeometry(1); // get coordinates of the external monitor
     publicWidget->move(QPoint(screenres.x(), screenres.y()));
     //publicWidget->showFullScreen();
-	publicWidget->showMaximized();
+    //publicWidget->showMaximized(); // DO NOT MAXIMIZE HERE, so that the "Außenmonitor aktivieren" works properly
     publicWidget->setWindowTitle(tr("Öffentlicher Monitor"));
     // use closeEvent for closing this widget
 
@@ -169,7 +175,8 @@ MainWindow::~MainWindow()
 Competition* MainWindow::competition()
 {
 	if(myCompetition == 0){
-		myCompetition = new Competition(0,"", 15, QString("rot grün blau").split(' '),"", "");
+		// return dummy competition
+		myCompetition = new Competition(0,"", N_BOATBOXES-N_SPARE_BOATBOXES, QString("rot grün blau").split(' '),"", "");
         myCompetition->setModified(false);
     }
 	return myCompetition;
@@ -355,7 +362,7 @@ void MainWindow::on_actionViewTimeStampList_triggered()
 {
 	if(formTimeStampList == 0){
 		formTimeStampList = new FormTimeStampList(this);
-		connect(competition(), SIGNAL(timeStampChanged(TimeStamp*)), formTimeStampList, SLOT(updateTableRow(TimeStamp*)));
+        connect(competition(), SIGNAL(timeStampChanged(TimeStamp*)), formTimeStampList, SLOT(updateTableRow(TimeStamp*)));
 	}
 
 	formTimeStampList->show();
@@ -386,8 +393,11 @@ bool MainWindow::openFile(QString fileName, bool onlineMode)
         connect(myCompetition, SIGNAL(runChanged(RunData*)), ui->tableWidget_main, SLOT(updateTableRow(RunData*)));
         connect(myCompetition, SIGNAL(timeStampChanged(TimeStamp*)), ui->tableWidget_timeStamps, SLOT(updateTimeStamp(TimeStamp*)));
 		
+        qDebug()<<"regenerating main-table...";
         ui->tableWidget_main->regenerateTable();
-        ui->tableWidget_timeStamps->regenerateList();
+        qDebug()<<"regenerating timestamplist...";
+        ui->tableWidget_timeStamps->regenerateList(); // SLOW_BUG
+        qDebug()<<"refreshing runs...";
         ui->widget_public->refreshRuns();
         publicWidget->refreshRuns();
 		boxStates.updateBoatNames();
@@ -402,7 +412,6 @@ bool MainWindow::openFile(QString fileName, bool onlineMode)
 
         if(onlineMode){
             ui->infoscreen->appendInfo(tr("Bewerb zum Fortsetzen geladen"));
-            initTimeBaseListener();
         }else{
             ui->infoscreen->appendInfo(tr("Bewerb zum Betrachten und Editieren geladen"));
         }
@@ -530,12 +539,12 @@ void MainWindow::newCompetition()
 									dialogNewCompetition->colors(), "",
 								  dialogNewCompetition->databaseName());
 
-	connect(competition(), SIGNAL(timeStampChanged(TimeStamp*)), ui->tableWidget_timeStamps, SLOT(updateTimeStamp(TimeStamp*)));
+    connect(competition(), SIGNAL(timeStampChanged(TimeStamp*)), ui->tableWidget_timeStamps, SLOT(updateTimeStamp(TimeStamp*)));
 	connect(competition(), SIGNAL(boatboxBindingChanged(int)), &boxStates, SLOT(updateBoatNames()));
-	connect(competition(), SIGNAL(runChanged(RunData*)), ui->tableWidget_main, SLOT(updateTableRow(RunData*)));
+    connect(competition(), SIGNAL(runChanged(RunData*)), ui->tableWidget_main, SLOT(updateTableRow(RunData*)));
     connect(competition(), SIGNAL(isModifiedChanged()), this, SLOT(updateWindowTitle()));
     connect(competition(), SIGNAL(modified()), &autoSaveManager, SLOT(doAutoSave()));
-    connect(competition(), SIGNAL(timeStampAdded(TimeStamp*)), this, SLOT(playSound()));
+    connect(competition(), SIGNAL(timeStampAdded(TimeStamp*)), this, SLOT(playTriggerSound(TimeStamp*)));
     connect(competition(), SIGNAL(highestValidRunChanged(int)), this, SLOT(loadNextRuns())); // ensure, that the table is always long enough!
 	connect(competition(), SIGNAL(manualPublished(RunData*)), publisher, SLOT(addToQueueManual(RunData*)));
     connect(competition(), SIGNAL(runChanged(RunData*)), ui->widget_public, SLOT(refreshRuns()));
@@ -576,7 +585,7 @@ void MainWindow::newCompetition()
 
 	setOnlineMode(true);
     competition()->setModified(false);
-
+	
     QFileInfo oldFile = currentFile;
     currentFile.setFile(oldFile.absolutePath()+"/"); // set current file to no-file, but keep currend path!
 
@@ -584,8 +593,6 @@ void MainWindow::newCompetition()
 	boxStates.updateBoatNames();
 	
 	ui->infoscreen->appendInfo("Neuer Bewerb gestartet");
-
-    initTimeBaseListener();
 
     backupTimer.stop();
     backupTimer.start(BACKUP_INTERVAL);
@@ -695,9 +702,8 @@ void MainWindow::processTimeBaseDatagrams()
 								// there is a valid trigger-time for the left side
 								QTime time(0,0,0,0);
 								time=time.addMSecs(inPacket.tsPacket.triggerTimeTS_L/10);
-
+								
 								boxStates.setTsTriggerTimeL(s, time);
-								//qDebug() << "TS left last triggerd at" << time;
 							}
 
 							if(inPacket.tsPacket.triggerTimeTS_R != TIME_INVALID)
@@ -707,7 +713,6 @@ void MainWindow::processTimeBaseDatagrams()
 								time=time.addMSecs(inPacket.tsPacket.triggerTimeTS_R/10);
 
 								boxStates.setTsTriggerTimeR(s, time);
-								//qDebug() << "TS right last triggerd at" << time;
 							}
 
 
@@ -719,7 +724,6 @@ void MainWindow::processTimeBaseDatagrams()
 								
 								if(ID>=1 && ID<=N_BOATBOXES)
 								{
-
 									boxStates.setBoatBoxVoltage(ID, s, inPacket.tsPacket.batteryVoltageBB/1000.0);
 									boxStates.setBoatBoxRssi(ID, s, num2rssi(inPacket.tsPacket.binRssiBB));
 	
@@ -733,8 +737,6 @@ void MainWindow::processTimeBaseDatagrams()
 	
 										QTime time(0,0,0,0);
 										time=time.addMSecs((inPacket.tsPacket.triggerTimeBB+5)/10); // correct rounding to 0.01s
-	
-										//qDebug() << "boatbox last triggerd at" << time.toString("hh:mm:ss.zzz");
 	
 										switch(inPacket.tsPacket.stationTriggeredAt)
 										{
@@ -821,9 +823,9 @@ void MainWindow::sourcesStatistics()
     int tsgl=0;
     int tsgr=0;
 
-    int bbStart[21]={0};
-    int bbGoalL[21]={0};
-    int bbGoalR[21]={0};
+    int bbStart[N_BOATBOXES+1]={0};
+    int bbGoalL[N_BOATBOXES+1]={0};
+    int bbGoalR[N_BOATBOXES+1]={0};
 
     for(int rID=1; rID<=c->getNumOfRuns(); rID++){
         ts = c->getTimeStamp(c->getRun(rID)->getStartTimeID());
@@ -852,7 +854,7 @@ void MainWindow::sourcesStatistics()
 
     qDebug() << "LS =" << ls << ", TSS = " << tss << ", LGL =" << lgl << ", LGR" << lgr << ", TSGL = " << tsgl << ", TSGR =" << tsgr;
 
-    for(int n=1; n<=20; n++){
+    for(int n=1; n<=N_BOATBOXES; n++){
         qDebug() << QString("BB%1: Start(%2), GoalL(%3), GoalR(%4)").arg(n).arg(bbStart[n]).arg(bbGoalL[n]).arg(bbGoalR[n]);
     }
 }
@@ -916,10 +918,10 @@ void MainWindow::initTimeBaseListener()
         if(udpSocket == 0){
             qDebug("Error on creating UDP port object");
         }
-        udpSocket->bind(UDP_LISTEN_PORT, QUdpSocket::ShareAddress);
+		// the final binding happens in setOnlineMode()!
+        //udpSocket->bind(UDP_LISTEN_PORT, QUdpSocket::ShareAddress);
         connect(udpSocket, SIGNAL(readyRead()),
                 this, SLOT(processTimeBaseDatagrams()));
-        qDebug("listening to UDP");
     }
 }
 
@@ -995,29 +997,42 @@ QFileInfo MainWindow::getCurrentFile()
 }
 
 
-void MainWindow::playSound()
+void MainWindow::playTriggerSound(TimeStamp* ts)
 {
-	if(ui->actionGlobalSoundOnOff->isChecked())
+	if(dialogGeneralSettings->soundOnTrigger())
 	{
-#ifndef Q_OS_WIN
-		if(fork()==0)
+		switch(ts->getSource())
 		{
-			execl("/usr/bin/aplay", "aplay", "-q", "misc/napf.wav", NULL);
+			case TimeStamp::LS: case TimeStamp::LGL: case TimeStamp::LGR: playSoundFile("misc/blitz.wav"); break;
+			case TimeStamp::TSS: case TimeStamp::TSGL: case TimeStamp::TSGR: playSoundFile("misc/napf.wav"); break;
+			default: break; // no sound for manual and edited
 		}
-#endif
 	}
 }
 
 void MainWindow::playErrorSound()
 {
-	if(ui->actionGlobalSoundOnOff->isChecked())
+	playSoundFile("misc/dingding.wav");
+}
+
+void MainWindow::playStartSound()
+{
+	if(dialogGeneralSettings->soundOnStart())
 	{
-#ifndef Q_OS_WIN
+		playSoundFile("misc/klappe.wav");
+	}
+}
+
+void MainWindow::playSoundFile(QString filename)
+{
+	if(!filename.isEmpty())
+	{
+		#ifndef Q_OS_WIN
 		if(fork()==0)
 		{
-			execl("/usr/bin/aplay", "aplay", "-q", "misc/dingding.wav", NULL);
+			execl("/usr/bin/aplay", "aplay", "-q", filename.toAscii().data(), NULL);
 		}
-#endif
+		#endif
 	}
 }
 
@@ -1086,6 +1101,19 @@ void MainWindow::on_actionCompetitionProperties_triggered()
 // this is the central function for setting online mode
 void MainWindow::setOnlineMode(bool online)
 {
+	if(online)
+	{
+		if(udpSocket->state()!=QAbstractSocket::BoundState)
+		{
+			qDebug() << "open UDP";
+			udpSocket->bind(UDP_LISTEN_PORT, QUdpSocket::ShareAddress);
+		}
+	}
+	else
+	{
+		qDebug() << "close UDP";
+		udpSocket->close();
+	}
     ui->timeline->setOnlineMode(online);
     ui->pushButton_manualTrigger->setEnabled(online);
     ui->tableWidget_main->setOnlineMode(online);
@@ -1193,9 +1221,23 @@ void MainWindow::on_actionPublish_all_triggered()
 	}
 }
 
-void MainWindow::on_actionMaximicePublicWidget_triggered()
+void MainWindow::on_actionSetupPublicWidget_triggered()
 {
-    publicWidget->showMaximized();
+	// call the config-screens script to setup external monitor
+	QProcess* process=new QProcess(this);
+	connect(process, SIGNAL(finished(int)), this, SLOT(configScreenFinished()));
+	#ifndef Q_OS_WIN
+	process->start("/bin/bash", QStringList() << QDir::currentPath()+"/misc/config-screens.sh");
+	#endif
+}
+
+void MainWindow::configScreenFinished()
+{
+	// put the public widget on the external monitor
+	QRect screenres = QApplication::desktop()->screenGeometry(1); // get coordinates of the external monitor
+    publicWidget->move(QPoint(screenres.x(), screenres.y()));
+    //publicWidget->showFullScreen();
+	publicWidget->showMaximized();
 }
 
 void MainWindow::writeBetweenRating()
@@ -1204,13 +1246,13 @@ void MainWindow::writeBetweenRating()
 	competition()->exportCSV(QDir::homePath()+"/Bewerbe/Zwischenwertung.csv");
 
     // run the upload command:
-    static QProcess* process = NULL;
+    static QProcess* process = 0;
 
-    if(process == NULL){
+    if(process == 0){
         process = new QProcess(this);
     }
 
-    if(process != NULL){
+    if(process != 0){
 		QString cmd = dialogCsvUploadCommand->commandText();
 
 		QStringList params = dialogCsvUploadCommand->parameters();
@@ -1283,4 +1325,16 @@ void MainWindow::sendRadioCommand(uint16_t cmdReceiver, uint8_t command)
 	QByteArray datagram;
 	datagram.setRawData((char*)(&outPacket), sizeof(PC2TB_PACKET));
     sendPC2TB_Packet(datagram);
+}
+
+
+QDateTime MainWindow::getStartUpTime()
+{
+	return startUpTime;
+}
+
+
+void MainWindow::on_actionAbout_triggered()
+{
+    QMessageBox::about(this, tr("Über Kiboko-Manager"), tr("von:\nKarl Zeilhofer\nFriedrich Feichtinger\n\nkompiliert am: ")+QString(BUILDDATE)+"  "+QString(BUILDTIME));
 }

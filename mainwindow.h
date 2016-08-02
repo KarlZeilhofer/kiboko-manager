@@ -61,6 +61,8 @@ public:
     QFileInfo getCurrentFile();
     bool openFile(QString fileName, bool onlineMode);
     void askForSave();
+	QTime getTimeBaseTime();
+	QDateTime getStartUpTime();
 
 private:
 	void initTimeBaseListener();
@@ -110,7 +112,6 @@ private slots:
 	void on_actionReadFdiskData_triggered();
 #endif
 	void on_actionPublish_all_triggered();
-	void on_actionMaximicePublicWidget_triggered();
 	
 	void writeBetweenRating();
 	
@@ -122,16 +123,23 @@ private slots:
 	
 	void on_actionReset_Goalbox_triggered();
 	
+	void on_actionSetupPublicWidget_triggered();
+	
+	void on_actionAbout_triggered();
+	
 public slots:
 	void processTimeBaseDatagrams();
-	void playSound();
+	void playTriggerSound(TimeStamp* ts);
 	void playErrorSound();
+	void playStartSound();
+	void playSoundFile(QString filename);
     void loadNextRuns();
 	void sendPC2TB_Packet();
 	void sendPC2TB_Packet(QByteArray datagram);
     void on_actionCreateCompetition_triggered();
     void on_actionViewAndEdit_triggered();
-
+	
+	void configScreenFinished();
 signals:
 	void showFoundRun(RunData* run);
 
@@ -140,8 +148,6 @@ public:
     DialogCsvUploadCommand* dialogCsvUploadCommand;
     int localTimeOffset_ms; // localTimeOffset_ms =  timeBaseTime - localTime;
         // --> timeBaseTime = localTime + offset
-    QTime getTimeBaseTime();
-    QFileInfo currentFile;
 
 private:
 	Ui::MainWindow *ui;
@@ -180,6 +186,8 @@ private:
 	Fdisk fdisk;
 #endif
 	QShortcut* manualTrigger;
+	QFileInfo currentFile;
+	QDateTime startUpTime;
 	
 };
 
