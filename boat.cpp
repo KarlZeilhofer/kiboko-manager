@@ -1,4 +1,4 @@
-﻿#include "boat.h"
+#include "boat.h"
 
 Boat::Boat(QObject *parent, int ID, QString name) :
 	QObject(parent)

@@ -154,7 +154,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	
 	manualTrigger=new QShortcut(QKeySequence("CTRL+Space"), this);
 	connect(manualTrigger, SIGNAL(activated()), this, SLOT(on_pushButton_manualTrigger_clicked()));
-#ifndef Q_OS_WIN
+#ifdef ENABLE_FDISK
 	connect(&fdisk, SIGNAL(finished()), this, SLOT(writeBetweenRating()));
 #endif
 
@@ -203,6 +203,12 @@ void MainWindow::on_pushButton_search_clicked()
 
 void MainWindow::on_lineEdit_searchText_returnPressed()
 {
+	/*
+	// create segfault
+	int a[10];
+	a[10]=0;
+	*/
+	
 	static int ID=0;
 	if(!ui->lineEdit_searchText->text().isEmpty())
 	{
@@ -377,7 +383,7 @@ bool MainWindow::openFile(QString fileName, bool onlineMode)
     if(competition()->isModified()){
         askForSave();
     }
-#ifndef Q_OS_WIN
+#ifdef ENABLE_FDISK
 	fdisk.wait();
 #endif
 	
@@ -523,7 +529,7 @@ void MainWindow::newCompetition()
 	if(myCompetition && myCompetition->isModified()){
 		askForSave();
 	}
-#ifndef Q_OS_WIN
+#ifdef ENABLE_FDISK
 	fdisk.wait();
 #endif
 
@@ -782,7 +788,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 		if(competition()->isModified()){
 			askForSave();
 		}
-#ifndef Q_OS_WIN
+#ifdef ENABLE_FDISK
 		fdisk.wait();
 #endif
         publicWidget->close();
@@ -900,7 +906,7 @@ void MainWindow::loadNextRuns()
             RunData* run = new RunData();
             competition()->addRun(run);
         }
-#ifndef Q_OS_WIN
+#ifdef ENABLE_FDISK
 		// start fdisk thread, update data
 		fdisk.start();
 #endif
@@ -1204,7 +1210,7 @@ void MainWindow::on_actionDebugStatistics_triggered()
     sourcesStatistics();
 }
 
-#ifndef Q_OS_WIN
+#ifdef ENABLE_FDISK
 void MainWindow::on_actionReadFdiskData_triggered()
 {
     fdisk.start();

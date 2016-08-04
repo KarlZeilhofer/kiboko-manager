@@ -9,10 +9,17 @@ INCLUDEPATH += .
 
 QT	+= core gui network
 
+#CONFIG += fdisk
+
 unix{
 	DEFINES += BUILDTIME=\\\"$$system(date '+%H:%M:%S')\\\"
 	DEFINES += BUILDDATE=\\\"$$system(date '+%d.%m.%Y')\\\"
 }
+
+win{
+	CONFIG -= fdisk
+}
+
 
 # Input
 HEADERS += boat.h \
@@ -109,7 +116,9 @@ RESOURCES += \
     kiboko-manager.qrc
 
 
-!win{
+fdisk{
+	DEFINES += ENABLE_FDISK
+
 	STAFF_HOME   = $$(STAFF_HOME)
 
 	!isEmpty (STAFF_HOME) {

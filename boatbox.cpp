@@ -1,4 +1,4 @@
-﻿#include "boatbox.h"
+#include "boatbox.h"
 
 Boatbox::Boatbox(QObject *parent, int ID, int boatID) :
     QObject(parent)

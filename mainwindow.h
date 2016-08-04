@@ -8,8 +8,8 @@
 #include "boxstates.h"
 #include "boxstatesview.h"
 
-#ifndef Q_OS_WIN
-	#include "fdisk.h"
+#ifdef ENABLE_FDISK
+#include "fdisk.h"
 #endif
 
 #include <typeinfo>
@@ -108,7 +108,7 @@ private slots:
     void on_actionOpenDocumentation_triggered();
 	void on_actionCheatSheet_triggered();
 	void on_actionDebugStatistics_triggered();
-#ifndef Q_OS_WIN
+#ifdef ENABLE_FDISK
 	void on_actionReadFdiskData_triggered();
 #endif
 	void on_actionPublish_all_triggered();
@@ -182,7 +182,7 @@ private:
 
     QTimer backupTimer;
 	
-#ifndef Q_OS_WIN
+#ifdef ENABLE_FDISK
 	Fdisk fdisk;
 #endif
 	QShortcut* manualTrigger;

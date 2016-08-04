@@ -6,7 +6,10 @@
 #include <QFileInfo>
 #include <QHostInfo>
 #include "mainwindow.h"
+
+#ifdef ENABLE_FDISK
 #include "fdisk.h"
+#endif
 
 DialogNewCompetition::DialogNewCompetition(QWidget *parent) :
     QDialog(parent),
@@ -115,6 +118,8 @@ void DialogNewCompetition::on_spinBox_startAtRun_valueChanged(int runID)
 
 void DialogNewCompetition::on_pushButton_testDatabase_clicked()
 {
+#ifdef ENABLE_FDISK
     Fdisk myFdisk;
 	myFdisk.test(ui->lineEdit_databaseName->text());
+#endif
 }

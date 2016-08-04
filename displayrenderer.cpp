@@ -1,4 +1,4 @@
-﻿#include "displayrenderer.h"
+#include "displayrenderer.h"
 #include "mainwindow.h"
 #include "competition.h"
 #include <QPainter>
