@@ -155,7 +155,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	manualTrigger=new QShortcut(QKeySequence("CTRL+Space"), this);
 	connect(manualTrigger, SIGNAL(activated()), this, SLOT(on_pushButton_manualTrigger_clicked()));
 #ifdef ENABLE_FDISK
-	connect(&fdisk, SIGNAL(finished()), this, SLOT(writeBetweenRating()));
+	connect(&fdisk, SIGNAL(finished()), this, SLOT(uploadMidtermAssessment()));
 #endif
 
     setOnlineMode(false);
@@ -1246,7 +1246,7 @@ void MainWindow::configScreenFinished()
 	publicWidget->showMaximized();
 }
 
-void MainWindow::writeBetweenRating()
+void MainWindow::uploadMidtermAssessment()
 {
 	// export to CSV-file
 	competition()->exportCSV(QDir::homePath()+"/Bewerbe/Zwischenwertung.csv");
@@ -1265,9 +1265,12 @@ void MainWindow::writeBetweenRating()
 		params.replaceInStrings("%fdisk_id", competition()->getDatabaseName()); // replace the formatstring
 
 		process->start(cmd, params);
+		
 		qDebug() << "Run command: " << cmd << params;
+		infoscreen()->appendInfo(tr("Zwischenwertung wurde hochgeladen"));
     }else{
         qDebug() << "Error on running the CSV upload command";
+		infoscreen()->appendWarning(tr("Hochladen der Zwischenwertung gescheitert!"));
     }
 }
 
@@ -1343,4 +1346,10 @@ QDateTime MainWindow::getStartUpTime()
 void MainWindow::on_actionAbout_triggered()
 {
     QMessageBox::about(this, tr("Über Kiboko-Manager"), tr("von:\nKarl Zeilhofer\nFriedrich Feichtinger\n\nkompiliert am: ")+QString(BUILDDATE)+"  "+QString(BUILDTIME));
+}
+
+
+void MainWindow::on_actionUploadMidtermAssessment_triggered()
+{
+	uploadMidtermAssessment();
 }

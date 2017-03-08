@@ -412,7 +412,7 @@
                <item row="0" column="3">
                 <widget class="QRadioButton" name="radioButton_centerUnassigned">
                  <property name="text">
-                  <string>unzugeordnete</string>
+                  <string>&amp;unzugeordnete</string>
                  </property>
                  <attribute name="buttonGroup">
                   <string notr="true">buttonGroup</string>
@@ -454,7 +454,7 @@
                <item row="0" column="2">
                 <widget class="QRadioButton" name="radioButton_centerGoal">
                  <property name="text">
-                  <string>Ziel</string>
+                  <string>&amp;Ziel</string>
                  </property>
                  <property name="checked">
                   <bool>false</bool>
@@ -473,7 +473,7 @@
                <item row="0" column="0">
                 <widget class="QRadioButton" name="radioButton_centerNothing">
                  <property name="text">
-                  <string>Gegenwart</string>
+                  <string>&amp;Gegenwart</string>
                  </property>
                  <property name="checkable">
                   <bool>true</bool>
@@ -694,8 +694,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>98</width>
-             <height>28</height>
+             <width>1251</width>
+             <height>567</height>
             </rect>
            </property>
           </widget>
@@ -728,7 +728,7 @@
    </property>
    <widget class="QMenu" name="menuCompetition">
     <property name="title">
-     <string>Bewerb</string>
+     <string>&amp;Bewerb</string>
     </property>
     <addaction name="actionCreateCompetition"/>
     <addaction name="actionViewAndEdit"/>
@@ -740,15 +740,16 @@
    </widget>
    <widget class="QMenu" name="menuConnections">
     <property name="title">
-     <string>System</string>
+     <string>&amp;System</string>
     </property>
     <addaction name="actionShowTimeBaseDialog"/>
     <addaction name="actionSetupPublicWidget"/>
     <addaction name="actionReadFdiskData"/>
+    <addaction name="actionUploadMidtermAssessment"/>
    </widget>
    <widget class="QMenu" name="menuSettings">
     <property name="title">
-     <string>Einstellungen</string>
+     <string>&amp;Einstellungen</string>
     </property>
     <addaction name="actionShowGeneralSettings"/>
     <addaction name="actionShowDisplaySettings"/>
@@ -756,7 +757,7 @@
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
-     <string>Hilfe</string>
+     <string>&amp;Hilfe</string>
     </property>
     <addaction name="actionOpenDocumentation"/>
     <addaction name="actionCheatSheet"/>
@@ -768,7 +769,7 @@
      <bool>true</bool>
     </property>
     <property name="title">
-     <string>Debug</string>
+     <string>&amp;Debug</string>
     </property>
     <addaction name="actionTimeStampGenerator"/>
     <addaction name="actionTimeStamp_Generator_2"/>
@@ -788,7 +789,7 @@
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionCreateCompetition">
    <property name="text">
-    <string>Erstellen</string>
+    <string>&amp;Erstellen</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
@@ -799,7 +800,7 @@
   </action>
   <action name="actionSaveCompetition">
    <property name="text">
-    <string>Speichern</string>
+    <string>&amp;Speichern</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
@@ -810,7 +811,7 @@
   </action>
   <action name="actionExportCompetition">
    <property name="text">
-    <string>Exportieren</string>
+    <string>E&amp;xportieren</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+E</string>
@@ -821,27 +822,27 @@
   </action>
   <action name="actionShowTimeBaseDialog">
    <property name="text">
-    <string>Zeitbasis synchronisieren</string>
+    <string>&amp;Zeitbasis synchronisieren</string>
    </property>
   </action>
   <action name="actionShowGeneralSettings">
    <property name="text">
-    <string>Allgemeines</string>
+    <string>&amp;Allgemeines</string>
    </property>
   </action>
   <action name="actionOpenDocumentation">
    <property name="text">
-    <string>Dokumentation</string>
+    <string>&amp;Dokumentation</string>
    </property>
   </action>
   <action name="actionAbout">
    <property name="text">
-    <string>Über diese Software</string>
+    <string>&amp;Über diese Software</string>
    </property>
   </action>
   <action name="actionAboutQt">
    <property name="text">
-    <string>Über Qt</string>
+    <string>Über &amp;Qt</string>
    </property>
   </action>
   <action name="actionGlobalSoundOnOff">
@@ -857,17 +858,17 @@
   </action>
   <action name="actionShowDisplaySettings">
    <property name="text">
-    <string>Anzeigetafeln</string>
+    <string>A&amp;nzeigetafeln</string>
    </property>
   </action>
   <action name="actionShowColumnsSettings">
    <property name="text">
-    <string>Spalten</string>
+    <string>&amp;Spalten</string>
    </property>
   </action>
   <action name="actionTimeStampGenerator">
    <property name="text">
-    <string>TimeStamp Generator</string>
+    <string>&amp;TimeStamp Generator</string>
    </property>
   </action>
   <action name="actionViewTimeStampList">
@@ -875,12 +876,12 @@
     <bool>false</bool>
    </property>
    <property name="text">
-    <string>View TimeStamp List</string>
+    <string>&amp;View TimeStamp List</string>
    </property>
   </action>
   <action name="actionSaveAs">
    <property name="text">
-    <string>Speichern Unter...</string>
+    <string>Speichern &amp;Unter...</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+S</string>
@@ -888,7 +889,7 @@
   </action>
   <action name="actionViewAndEdit">
    <property name="text">
-    <string>Betrachten/Editieren</string>
+    <string>&amp;Betrachten/Editieren</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
@@ -896,7 +897,7 @@
   </action>
   <action name="actionCheatSheet">
    <property name="text">
-    <string>Schummelzettel</string>
+    <string>&amp;Schummelzettel</string>
    </property>
   </action>
   <action name="actionFlipdotPixeltest">
@@ -906,47 +907,55 @@
   </action>
   <action name="actionCompetitionProperties">
    <property name="text">
-    <string>Eigenschaften</string>
+    <string>E&amp;igenschaften</string>
    </property>
   </action>
   <action name="actionDebugStatistics">
    <property name="text">
-    <string>Statistics</string>
+    <string>&amp;Statistics</string>
    </property>
   </action>
   <action name="actionReadFdiskData">
    <property name="text">
-    <string>FDISK-Daten aktualisieren</string>
+    <string>&amp;FDISK-Daten aktualisieren</string>
    </property>
   </action>
   <action name="actionPublish_all">
    <property name="text">
-    <string>Publish all</string>
+    <string>&amp;Publish all</string>
    </property>
   </action>
   <action name="actionSetupPublicWidget">
    <property name="text">
-    <string>Außenmonitor aktivieren</string>
+    <string>&amp;Außenmonitor aktivieren</string>
    </property>
   </action>
   <action name="actionCSV_Upload_Command">
    <property name="text">
-    <string>CSV Upload Command</string>
+    <string>&amp;CSV Upload Command</string>
    </property>
   </action>
   <action name="actionTimeStamp_Generator_2">
    <property name="text">
-    <string>TimeStamp Generator 2</string>
+    <string>TimeStamp Generator &amp;2</string>
    </property>
   </action>
   <action name="actionReset_Startbox">
    <property name="text">
-    <string>Reset Startbox</string>
+    <string>&amp;Reset Startbox</string>
    </property>
   </action>
   <action name="actionReset_Goalbox">
    <property name="text">
-    <string>Reset Goalbox</string>
+    <string>Reset &amp;Goalbox</string>
+   </property>
+  </action>
+  <action name="actionUploadMidtermAssessment">
+   <property name="text">
+    <string>Zwischenwertung &amp;hochladen</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+U</string>
    </property>
   </action>
  </widget>

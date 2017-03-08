@@ -112,20 +112,14 @@ private slots:
 	void on_actionReadFdiskData_triggered();
 #endif
 	void on_actionPublish_all_triggered();
-	
-	void writeBetweenRating();
-	
+	void uploadMidtermAssessment();
     void on_actionCSV_Upload_Command_triggered();
-
 	void on_actionTimeStamp_Generator_2_triggered();
-
 	void on_actionReset_Startbox_triggered();
-	
 	void on_actionReset_Goalbox_triggered();
-	
 	void on_actionSetupPublicWidget_triggered();
-	
 	void on_actionAbout_triggered();
+	void on_actionUploadMidtermAssessment_triggered();
 	
 public slots:
 	void processTimeBaseDatagrams();
