@@ -9,7 +9,13 @@ INCLUDEPATH += .
 
 QT	+= core gui network
 
-#CONFIG += fdisk
+
+#######################################
+# ATTENTION: to compile with fdisk add
+# CONFIG += fdisk
+# to your local build configuration
+#######################################
+
 
 unix{
 	DEFINES += BUILDTIME=\\\"$$system(date '+%H:%M:%S')\\\"
@@ -17,7 +23,7 @@ unix{
 }
 
 win{
-	CONFIG -= fdisk
+	CONFIG -= fdisk		# fdisk is not supported on windows
 }
 
 

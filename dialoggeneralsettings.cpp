@@ -83,14 +83,14 @@ bool DialogGeneralSettings::soundOnStart()
 }
 
 
-void DialogGeneralSettings::on_radioButton_assignOnlyForward_toggled(bool checked)
+void DialogGeneralSettings::on_radioButton_assignOnlyForward_toggled(bool /*checked*/)
 {
     QSettings set;
     set.beginGroup(SS_GS_PREFIX);
     set.setValue(SS_GS_ASSIGN_ONLY_FORWARD, ui->radioButton_assignOnlyForward->isChecked());
 }
 
-void DialogGeneralSettings::on_radioButton_assignToCurrentRound_toggled(bool checked)
+void DialogGeneralSettings::on_radioButton_assignToCurrentRound_toggled(bool /*checked*/)
 {
     QSettings set;
     set.beginGroup(SS_GS_PREFIX);
