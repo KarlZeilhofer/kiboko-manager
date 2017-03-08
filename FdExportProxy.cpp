@@ -11,8 +11,8 @@
 #include <staff/utils/Base64Binary.h>
 #include <staff/common/DataObject.h>
 #include <staff/common/Attribute.h>
-#include <staff/common/Exception.h>
 #include <staff/common/Operation.h>
+#include <staff/common/Exception.h>
 #include <staff/client/ServiceFactory.h>
 #include <staff/client/IProxyAllocator.h>
 #include <staff/client/ICallback.h>
@@ -4050,7 +4050,7 @@ DataObject& operator<<(DataObject& rdoParam, const struct ::FdWsPrepareDataRetur
 
 const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsPrepareDataReturn& rstStruct)
 {
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("resultCount", rstStruct.resultCount), "Invalid value for element rstStruct.resultCount");
+  rdoParam.GetChildValueByLocalName("resultCount", rstStruct.resultCount);
   const staff::DataObject& rdoParamstatusMessage = rdoParam.GetChildByLocalNameOpt("statusMessage");
   if (!rdoParamstatusMessage.IsNull()) // optional
   {
@@ -4396,7 +4396,7 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsFWMitglied
   // deserialize parent struct
   rdoParam >> static_cast< struct ::Writer& >(rstStruct);
 
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdInstanzen", rstStruct.FdiskIdInstanzen), "Invalid value for element rstStruct.FdiskIdInstanzen");
+  rdoParam.GetChildValueByLocalName("FdiskIdInstanzen", rstStruct.FdiskIdInstanzen);
   const staff::DataObject& rdoParamInstanznummer = rdoParam.GetChildByLocalNameOpt("Instanznummer");
   if (!rdoParamInstanznummer.IsNull()) // optional
   {
@@ -4417,8 +4417,8 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsFWMitglied
   {
     rdoParamZuname.GetValue(*rstStruct.Zuname);
   }
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdMitglieder", rstStruct.FdiskIdMitglieder), "Invalid value for element rstStruct.FdiskIdMitglieder");
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdPersonen", rstStruct.FdiskIdPersonen), "Invalid value for element rstStruct.FdiskIdPersonen");
+  rdoParam.GetChildValueByLocalName("FdiskIdMitglieder", rstStruct.FdiskIdMitglieder);
+  rdoParam.GetChildValueByLocalName("FdiskIdPersonen", rstStruct.FdiskIdPersonen);
   const staff::DataObject& rdoParamTitel = rdoParam.GetChildByLocalNameOpt("Titel");
   if (!rdoParamTitel.IsNull()) // optional
   {
@@ -4630,9 +4630,9 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsMitglieder
   // deserialize parent struct
   rdoParam >> static_cast< struct ::Writer& >(rstStruct);
 
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdMitglieder", rstStruct.FdiskIdMitglieder), "Invalid value for element rstStruct.FdiskIdMitglieder");
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdPersonen", rstStruct.FdiskIdPersonen), "Invalid value for element rstStruct.FdiskIdPersonen");
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdDienstgrade", rstStruct.FdiskIdDienstgrade), "Invalid value for element rstStruct.FdiskIdDienstgrade");
+  rdoParam.GetChildValueByLocalName("FdiskIdMitglieder", rstStruct.FdiskIdMitglieder);
+  rdoParam.GetChildValueByLocalName("FdiskIdPersonen", rstStruct.FdiskIdPersonen);
+  rdoParam.GetChildValueByLocalName("FdiskIdDienstgrade", rstStruct.FdiskIdDienstgrade);
   const staff::DataObject& rdoParamInstanznummer = rdoParam.GetChildByLocalNameOpt("Instanznummer");
   if (!rdoParamInstanznummer.IsNull()) // optional
   {
@@ -4750,12 +4750,12 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsMitglieder
   rdoParam.GetChildValueByLocalName("DatumReserve", rstStruct.DatumReserve);
   rdoParam.GetChildValueByLocalName("DatumAktiv", rstStruct.DatumAktiv);
   rdoParam.GetChildValueByLocalName("DatumEintritt", rstStruct.DatumEintritt);
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FlagAktiv", rstStruct.FlagAktiv), "Invalid value for element rstStruct.FlagAktiv");
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FlagEhrenmitglied", rstStruct.FlagEhrenmitglied), "Invalid value for element rstStruct.FlagEhrenmitglied");
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FlagJugend", rstStruct.FlagJugend), "Invalid value for element rstStruct.FlagJugend");
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FlagAbgemeldet", rstStruct.FlagAbgemeldet), "Invalid value for element rstStruct.FlagAbgemeldet");
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FlagReserve", rstStruct.FlagReserve), "Invalid value for element rstStruct.FlagReserve");
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FlagZivildienst", rstStruct.FlagZivildienst), "Invalid value for element rstStruct.FlagZivildienst");
+  rdoParam.GetChildValueByLocalName("FlagAktiv", rstStruct.FlagAktiv);
+  rdoParam.GetChildValueByLocalName("FlagEhrenmitglied", rstStruct.FlagEhrenmitglied);
+  rdoParam.GetChildValueByLocalName("FlagJugend", rstStruct.FlagJugend);
+  rdoParam.GetChildValueByLocalName("FlagAbgemeldet", rstStruct.FlagAbgemeldet);
+  rdoParam.GetChildValueByLocalName("FlagReserve", rstStruct.FlagReserve);
+  rdoParam.GetChildValueByLocalName("FlagZivildienst", rstStruct.FlagZivildienst);
   rdoParam.GetChildValueByLocalName("LetzteAenderung", rstStruct.LetzteAenderung);
   const staff::DataObject& rdoParamErreichbarkeitMobilFirma = rdoParam.GetChildByLocalNameOpt("ErreichbarkeitMobilFirma");
   if (!rdoParamErreichbarkeitMobilFirma.IsNull()) // optional
@@ -4807,8 +4807,8 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsMitglieder
   {
     rdoParamHasJugendfoerderung.GetValue(*rstStruct.HasJugendfoerderung);
   }
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("Feuerwachen", rstStruct.Feuerwachen), "Invalid value for element rstStruct.Feuerwachen");
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("Vordienstzeiten", rstStruct.Vordienstzeiten), "Invalid value for element rstStruct.Vordienstzeiten");
+  rdoParam.GetChildValueByLocalName("Feuerwachen", rstStruct.Feuerwachen);
+  rdoParam.GetChildValueByLocalName("Vordienstzeiten", rstStruct.Vordienstzeiten);
   return rdoParam;
 }
 
@@ -4874,8 +4874,8 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsAusbildung
   // deserialize parent struct
   rdoParam >> static_cast< struct ::Writer& >(rstStruct);
 
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdAusbildungen", rstStruct.FdiskIdAusbildungen), "Invalid value for element rstStruct.FdiskIdAusbildungen");
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdErsatzlehrgaenge", rstStruct.FdiskIdErsatzlehrgaenge), "Invalid value for element rstStruct.FdiskIdErsatzlehrgaenge");
+  rdoParam.GetChildValueByLocalName("FdiskIdAusbildungen", rstStruct.FdiskIdAusbildungen);
+  rdoParam.GetChildValueByLocalName("FdiskIdErsatzlehrgaenge", rstStruct.FdiskIdErsatzlehrgaenge);
   const staff::DataObject& rdoParamBezeichnung = rdoParam.GetChildByLocalNameOpt("Bezeichnung");
   if (!rdoParamBezeichnung.IsNull()) // optional
   {
@@ -4956,7 +4956,7 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsKurseStruc
   // deserialize parent struct
   rdoParam >> static_cast< struct ::Writer& >(rstStruct);
 
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdKurse", rstStruct.FdiskIdKurse), "Invalid value for element rstStruct.FdiskIdKurse");
+  rdoParam.GetChildValueByLocalName("FdiskIdKurse", rstStruct.FdiskIdKurse);
   const staff::DataObject& rdoParamKursnummer = rdoParam.GetChildByLocalNameOpt("Kursnummer");
   if (!rdoParamKursnummer.IsNull()) // optional
   {
@@ -5039,7 +5039,7 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsDienstgrad
   // deserialize parent struct
   rdoParam >> static_cast< struct ::Writer& >(rstStruct);
 
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdDienstgrade", rstStruct.FdiskIdDienstgrade), "Invalid value for element rstStruct.FdiskIdDienstgrade");
+  rdoParam.GetChildValueByLocalName("FdiskIdDienstgrade", rstStruct.FdiskIdDienstgrade);
   const staff::DataObject& rdoParamLangbezeichnung = rdoParam.GetChildByLocalNameOpt("Langbezeichnung");
   if (!rdoParamLangbezeichnung.IsNull()) // optional
   {
@@ -5050,7 +5050,7 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsDienstgrad
   {
     rdoParamKurzbezeichnung.GetValue(*rstStruct.Kurzbezeichnung);
   }
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("Rang", rstStruct.Rang), "Invalid value for element rstStruct.Rang");
+  rdoParam.GetChildValueByLocalName("Rang", rstStruct.Rang);
   rdoParam.GetChildValueByLocalName("LetzteAenderung", rstStruct.LetzteAenderung);
   return rdoParam;
 }
@@ -5209,7 +5209,7 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsSonderdien
   // deserialize parent struct
   rdoParam >> static_cast< struct ::Writer& >(rstStruct);
 
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdInstanzen", rstStruct.FdiskIdInstanzen), "Invalid value for element rstStruct.FdiskIdInstanzen");
+  rdoParam.GetChildValueByLocalName("FdiskIdInstanzen", rstStruct.FdiskIdInstanzen);
   rdoParam.GetChildValueByLocalName("Gruendungsdatum", rstStruct.Gruendungsdatum);
   const staff::DataObject& rdoParamInstanznummer = rdoParam.GetChildByLocalNameOpt("Instanznummer");
   if (!rdoParamInstanznummer.IsNull()) // optional
@@ -5401,7 +5401,7 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsFunktionen
   // deserialize parent struct
   rdoParam >> static_cast< struct ::Writer& >(rstStruct);
 
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdFunktionen", rstStruct.FdiskIdFunktionen), "Invalid value for element rstStruct.FdiskIdFunktionen");
+  rdoParam.GetChildValueByLocalName("FdiskIdFunktionen", rstStruct.FdiskIdFunktionen);
   const staff::DataObject& rdoParamLangbezeichnung = rdoParam.GetChildByLocalNameOpt("Langbezeichnung");
   if (!rdoParamLangbezeichnung.IsNull()) // optional
   {
@@ -5501,8 +5501,8 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsFunktionae
   // deserialize parent struct
   rdoParam >> static_cast< struct ::Writer& >(rstStruct);
 
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdFunktionen", rstStruct.FdiskIdFunktionen), "Invalid value for element rstStruct.FdiskIdFunktionen");
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdMitglieder", rstStruct.FdiskIdMitglieder), "Invalid value for element rstStruct.FdiskIdMitglieder");
+  rdoParam.GetChildValueByLocalName("FdiskIdFunktionen", rstStruct.FdiskIdFunktionen);
+  rdoParam.GetChildValueByLocalName("FdiskIdMitglieder", rstStruct.FdiskIdMitglieder);
   const staff::DataObject& rdoParamInstanzNummer = rdoParam.GetChildByLocalNameOpt("InstanzNummer");
   if (!rdoParamInstanzNummer.IsNull()) // optional
   {
@@ -5541,7 +5541,7 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsFunktionae
   {
     rdoParamInstanzArt.GetValue(*rstStruct.InstanzArt);
   }
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdPersonen", rstStruct.FdiskIdPersonen), "Invalid value for element rstStruct.FdiskIdPersonen");
+  rdoParam.GetChildValueByLocalName("FdiskIdPersonen", rstStruct.FdiskIdPersonen);
   return rdoParam;
 }
 
@@ -5705,7 +5705,7 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsInstanzenS
   // deserialize parent struct
   rdoParam >> static_cast< struct ::Writer& >(rstStruct);
 
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdInstanzen", rstStruct.FdiskIdInstanzen), "Invalid value for element rstStruct.FdiskIdInstanzen");
+  rdoParam.GetChildValueByLocalName("FdiskIdInstanzen", rstStruct.FdiskIdInstanzen);
   rdoParam.GetChildValueByLocalName("Gruendungsdatum", rstStruct.Gruendungsdatum);
   const staff::DataObject& rdoParamInstanznummer = rdoParam.GetChildByLocalNameOpt("Instanznummer");
   if (!rdoParamInstanznummer.IsNull()) // optional
@@ -5838,8 +5838,8 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsInstanzenS
   {
     rdoParamGemeindeName.GetValue(*rstStruct.GemeindeName);
   }
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("Feuerwachen", rstStruct.Feuerwachen), "Invalid value for element rstStruct.Feuerwachen");
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("HatJugend", rstStruct.HatJugend), "Invalid value for element rstStruct.HatJugend");
+  rdoParam.GetChildValueByLocalName("Feuerwachen", rstStruct.Feuerwachen);
+  rdoParam.GetChildValueByLocalName("HatJugend", rstStruct.HatJugend);
   return rdoParam;
 }
 
@@ -5911,7 +5911,7 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsFWInstanze
   // deserialize parent struct
   rdoParam >> static_cast< struct ::Writer& >(rstStruct);
 
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdInstanzen", rstStruct.FdiskIdInstanzen), "Invalid value for element rstStruct.FdiskIdInstanzen");
+  rdoParam.GetChildValueByLocalName("FdiskIdInstanzen", rstStruct.FdiskIdInstanzen);
   const staff::DataObject& rdoParamInstanznummer = rdoParam.GetChildByLocalNameOpt("Instanznummer");
   if (!rdoParamInstanznummer.IsNull()) // optional
   {
@@ -6010,8 +6010,8 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsGeraeteStr
   // deserialize parent struct
   rdoParam >> static_cast< struct ::Writer& >(rstStruct);
 
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdGeraete", rstStruct.FdiskIdGeraete), "Invalid value for element rstStruct.FdiskIdGeraete");
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdInstanzen", rstStruct.FdiskIdInstanzen), "Invalid value for element rstStruct.FdiskIdInstanzen");
+  rdoParam.GetChildValueByLocalName("FdiskIdGeraete", rstStruct.FdiskIdGeraete);
+  rdoParam.GetChildValueByLocalName("FdiskIdInstanzen", rstStruct.FdiskIdInstanzen);
   const staff::DataObject& rdoParamInstanzNummer = rdoParam.GetChildByLocalNameOpt("InstanzNummer");
   if (!rdoParamInstanzNummer.IsNull()) // optional
   {
@@ -6032,7 +6032,7 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsGeraeteStr
   {
     rdoParamGeraeteStandard.GetValue(*rstStruct.GeraeteStandard);
   }
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("GeraeteAnzahl", rstStruct.GeraeteAnzahl), "Invalid value for element rstStruct.GeraeteAnzahl");
+  rdoParam.GetChildValueByLocalName("GeraeteAnzahl", rstStruct.GeraeteAnzahl);
   const staff::DataObject& rdoParamGeraeteStatus = rdoParam.GetChildByLocalNameOpt("GeraeteStatus");
   if (!rdoParamGeraeteStatus.IsNull()) // optional
   {
@@ -6141,8 +6141,8 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsFahrzeugeS
   // deserialize parent struct
   rdoParam >> static_cast< struct ::Writer& >(rstStruct);
 
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdFahrzeuge", rstStruct.FdiskIdFahrzeuge), "Invalid value for element rstStruct.FdiskIdFahrzeuge");
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdInstanzen", rstStruct.FdiskIdInstanzen), "Invalid value for element rstStruct.FdiskIdInstanzen");
+  rdoParam.GetChildValueByLocalName("FdiskIdFahrzeuge", rstStruct.FdiskIdFahrzeuge);
+  rdoParam.GetChildValueByLocalName("FdiskIdInstanzen", rstStruct.FdiskIdInstanzen);
   const staff::DataObject& rdoParamInstanzNummer = rdoParam.GetChildByLocalNameOpt("InstanzNummer");
   if (!rdoParamInstanzNummer.IsNull()) // optional
   {
@@ -6158,7 +6158,7 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsFahrzeugeS
   {
     rdoParamTaktischeBezeichnung.GetValue(*rstStruct.TaktischeBezeichnung);
   }
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("Baujahr", rstStruct.Baujahr), "Invalid value for element rstStruct.Baujahr");
+  rdoParam.GetChildValueByLocalName("Baujahr", rstStruct.Baujahr);
   const staff::DataObject& rdoParamFeuerwache = rdoParam.GetChildByLocalNameOpt("Feuerwache");
   if (!rdoParamFeuerwache.IsNull()) // optional
   {
@@ -6345,7 +6345,7 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsFeuerwache
   // deserialize parent struct
   rdoParam >> static_cast< struct ::Writer& >(rstStruct);
 
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdInstanzen", rstStruct.FdiskIdInstanzen), "Invalid value for element rstStruct.FdiskIdInstanzen");
+  rdoParam.GetChildValueByLocalName("FdiskIdInstanzen", rstStruct.FdiskIdInstanzen);
   rdoParam.GetChildValueByLocalName("Gruendungsdatum", rstStruct.Gruendungsdatum);
   const staff::DataObject& rdoParamInstanznummer = rdoParam.GetChildByLocalNameOpt("Instanznummer");
   if (!rdoParamInstanznummer.IsNull()) // optional
@@ -6534,7 +6534,7 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsErreichbar
   // deserialize parent struct
   rdoParam >> static_cast< struct ::Writer& >(rstStruct);
 
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdFeuerwehrhaeuser", rstStruct.FdiskIdFeuerwehrhaeuser), "Invalid value for element rstStruct.FdiskIdFeuerwehrhaeuser");
+  rdoParam.GetChildValueByLocalName("FdiskIdFeuerwehrhaeuser", rstStruct.FdiskIdFeuerwehrhaeuser);
   const staff::DataObject& rdoParamFeuerwache = rdoParam.GetChildByLocalNameOpt("Feuerwache");
   if (!rdoParamFeuerwache.IsNull()) // optional
   {
@@ -6625,7 +6625,7 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsErreichbar
   // deserialize parent struct
   rdoParam >> static_cast< struct ::Writer& >(rstStruct);
 
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdPersonen", rstStruct.FdiskIdPersonen), "Invalid value for element rstStruct.FdiskIdPersonen");
+  rdoParam.GetChildValueByLocalName("FdiskIdPersonen", rstStruct.FdiskIdPersonen);
   const staff::DataObject& rdoParamErreichbarkeitArt = rdoParam.GetChildByLocalNameOpt("ErreichbarkeitArt");
   if (!rdoParamErreichbarkeitArt.IsNull()) // optional
   {
@@ -6764,9 +6764,9 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsFeuerwehrh
   // deserialize parent struct
   rdoParam >> static_cast< struct ::Writer& >(rstStruct);
 
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdFeuerwehrhaeuser", rstStruct.FdiskIdFeuerwehrhaeuser), "Invalid value for element rstStruct.FdiskIdFeuerwehrhaeuser");
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdFeuerwehren", rstStruct.FdiskIdFeuerwehren), "Invalid value for element rstStruct.FdiskIdFeuerwehren");
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdInstanzen", rstStruct.FdiskIdInstanzen), "Invalid value for element rstStruct.FdiskIdInstanzen");
+  rdoParam.GetChildValueByLocalName("FdiskIdFeuerwehrhaeuser", rstStruct.FdiskIdFeuerwehrhaeuser);
+  rdoParam.GetChildValueByLocalName("FdiskIdFeuerwehren", rstStruct.FdiskIdFeuerwehren);
+  rdoParam.GetChildValueByLocalName("FdiskIdInstanzen", rstStruct.FdiskIdInstanzen);
   const staff::DataObject& rdoParamInstanznummer = rdoParam.GetChildByLocalNameOpt("Instanznummer");
   if (!rdoParamInstanznummer.IsNull()) // optional
   {
@@ -6926,7 +6926,7 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsFeuerwehrG
   // deserialize parent struct
   rdoParam >> static_cast< struct ::Writer& >(rstStruct);
 
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdFwInstanzen", rstStruct.FdiskIdFwInstanzen), "Invalid value for element rstStruct.FdiskIdFwInstanzen");
+  rdoParam.GetChildValueByLocalName("FdiskIdFwInstanzen", rstStruct.FdiskIdFwInstanzen);
   const staff::DataObject& rdoParamFwNummer = rdoParam.GetChildByLocalNameOpt("FwNummer");
   if (!rdoParamFwNummer.IsNull()) // optional
   {
@@ -6937,7 +6937,7 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsFeuerwehrG
   {
     rdoParamFwName.GetValue(*rstStruct.FwName);
   }
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdGemInstanzen", rstStruct.FdiskIdGemInstanzen), "Invalid value for element rstStruct.FdiskIdGemInstanzen");
+  rdoParam.GetChildValueByLocalName("FdiskIdGemInstanzen", rstStruct.FdiskIdGemInstanzen);
   const staff::DataObject& rdoParamGemNummer = rdoParam.GetChildByLocalNameOpt("GemNummer");
   if (!rdoParamGemNummer.IsNull()) // optional
   {
@@ -7044,7 +7044,7 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsWasserdien
   // deserialize parent struct
   rdoParam >> static_cast< struct ::Writer& >(rstStruct);
 
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdBewerbsgruppen", rstStruct.FdiskIdBewerbsgruppen), "Invalid value for element rstStruct.FdiskIdBewerbsgruppen");
+  rdoParam.GetChildValueByLocalName("FdiskIdBewerbsgruppen", rstStruct.FdiskIdBewerbsgruppen);
   const staff::DataObject& rdoParamDurchgang = rdoParam.GetChildByLocalNameOpt("Durchgang");
   if (!rdoParamDurchgang.IsNull()) // optional
   {
@@ -7244,20 +7244,20 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsFeuerwehrl
   // deserialize parent struct
   rdoParam >> static_cast< struct ::Writer& >(rstStruct);
 
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdBewerbe", rstStruct.FdiskIdBewerbe), "Invalid value for element rstStruct.FdiskIdBewerbe");
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdPersonen", rstStruct.FdiskIdPersonen), "Invalid value for element rstStruct.FdiskIdPersonen");
+  rdoParam.GetChildValueByLocalName("FdiskIdBewerbe", rstStruct.FdiskIdBewerbe);
+  rdoParam.GetChildValueByLocalName("FdiskIdPersonen", rstStruct.FdiskIdPersonen);
   const staff::DataObject& rdoParamDienstgradKurz = rdoParam.GetChildByLocalNameOpt("DienstgradKurz");
   if (!rdoParamDienstgradKurz.IsNull()) // optional
   {
     rdoParamDienstgradKurz.GetValue(*rstStruct.DienstgradKurz);
   }
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("FdiskIdBewerbsgruppen", rstStruct.FdiskIdBewerbsgruppen), "Invalid value for element rstStruct.FdiskIdBewerbsgruppen");
+  rdoParam.GetChildValueByLocalName("FdiskIdBewerbsgruppen", rstStruct.FdiskIdBewerbsgruppen);
   const staff::DataObject& rdoParamBewerbsgruppe = rdoParam.GetChildByLocalNameOpt("Bewerbsgruppe");
   if (!rdoParamBewerbsgruppe.IsNull()) // optional
   {
     rdoParamBewerbsgruppe.GetValue(*rstStruct.Bewerbsgruppe);
   }
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("Bewerbsgruppennummer", rstStruct.Bewerbsgruppennummer), "Invalid value for element rstStruct.Bewerbsgruppennummer");
+  rdoParam.GetChildValueByLocalName("Bewerbsgruppennummer", rstStruct.Bewerbsgruppennummer);
   const staff::DataObject& rdoParamBewerbsbezeichnung = rdoParam.GetChildByLocalNameOpt("Bewerbsbezeichnung");
   if (!rdoParamBewerbsbezeichnung.IsNull()) // optional
   {
@@ -7283,7 +7283,7 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsFeuerwehrl
   {
     rdoParamAbschnitt.GetValue(*rstStruct.Abschnitt);
   }
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("ErreichtePunkte", rstStruct.ErreichtePunkte), "Invalid value for element rstStruct.ErreichtePunkte");
+  rdoParam.GetChildValueByLocalName("ErreichtePunkte", rstStruct.ErreichtePunkte);
   const staff::DataObject& rdoParamBewerbsgruppenStatus = rdoParam.GetChildByLocalNameOpt("BewerbsgruppenStatus");
   if (!rdoParamBewerbsgruppenStatus.IsNull()) // optional
   {
@@ -7350,7 +7350,7 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsFeuerwehrl
   {
     rdoParamBewerbsleiter.GetValue(*rstStruct.Bewerbsleiter);
   }
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("LeistungsabzeichenErhalten", rstStruct.LeistungsabzeichenErhalten), "Invalid value for element rstStruct.LeistungsabzeichenErhalten");
+  rdoParam.GetChildValueByLocalName("LeistungsabzeichenErhalten", rstStruct.LeistungsabzeichenErhalten);
   rdoParam.GetChildValueByLocalName("LetzteAenderung", rstStruct.LetzteAenderung);
   const staff::DataObject& rdoParamDetailPunkte = rdoParam.GetChildByLocalNameOpt("DetailPunkte");
   if (!rdoParamDetailPunkte.IsNull()) // optional
@@ -7415,7 +7415,7 @@ const DataObject& operator>>(const DataObject& rdoParam, struct ::FdWsFeuerwehrl
   {
     rdoParamBezeichnung.GetValue(*rstStruct.Bezeichnung);
   }
-  STAFF_ASSERT(rdoParam.GetChildValueByLocalName("Punkte", rstStruct.Punkte), "Invalid value for element rstStruct.Punkte");
+  rdoParam.GetChildValueByLocalName("Punkte", rstStruct.Punkte);
   return rdoParam;
 }
 
@@ -7578,6 +7578,7 @@ staff::Optional< ::FdWsPrepareDataReturn > FdExportProxy::PrepareData(const staf
   if (!(xmlRequest).IsNull()) // Optional
   {
     staff::DataObject tdoParamxmlRequest = rdoRequest.CreateChild("xmlRequest");
+    tdoParamxmlRequest.SetNamespaceUriGenPrefix("http://fdisk.at/");
     tdoParamxmlRequest << *xmlRequest;
   }
 
