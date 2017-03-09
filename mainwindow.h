@@ -132,6 +132,7 @@ public slots:
 	void sendPC2TB_Packet(QByteArray datagram);
     void on_actionCreateCompetition_triggered();
     void on_actionViewAndEdit_triggered();
+	void on_actionCrash_Kiboko_Manager_triggered();
 	
 	void configScreenFinished();
 signals:

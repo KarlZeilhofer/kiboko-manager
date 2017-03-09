@@ -779,6 +779,7 @@
     <addaction name="actionCSV_Upload_Command"/>
     <addaction name="actionReset_Startbox"/>
     <addaction name="actionReset_Goalbox"/>
+    <addaction name="actionCrash_Kiboko_Manager"/>
    </widget>
    <addaction name="menuCompetition"/>
    <addaction name="menuConnections"/>
@@ -956,6 +957,11 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+U</string>
+   </property>
+  </action>
+  <action name="actionCrash_Kiboko_Manager">
+   <property name="text">
+    <string>Harakiri</string>
    </property>
   </action>
  </widget>

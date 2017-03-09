@@ -1353,3 +1353,15 @@ void MainWindow::on_actionUploadMidtermAssessment_triggered()
 {
 	uploadMidtermAssessment();
 }
+
+
+void MainWindow::on_actionCrash_Kiboko_Manager_triggered()
+{
+	if(QMessageBox::question(this, tr("Harakiri"), tr("WARNUNG: Dieser Befehl beendet Kiboko-Manager umgehend. Bitte nur zum Testen verwenden.\n Sind Sie sicher?"), QMessageBox::Yes, QMessageBox::No)
+			==QMessageBox::Yes)
+	{
+		qDebug() << "Harakiri !!!";
+		int *ptr=0;
+		*ptr=0;
+	}
+}
