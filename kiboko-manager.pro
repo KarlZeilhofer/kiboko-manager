@@ -51,7 +51,7 @@ HEADERS += boat.h \
     boxstates.h \
     defs.h \
     boxstatesview.h \
-    ../../eclipse/rfsw_0.1/packet.h \
+    packet.h \
     timeline.h \
     maintablewidget.h \
     displayrenderer.h \

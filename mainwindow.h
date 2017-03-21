@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include "assignmentmanager.h"
 #include "autosavemanager.h"
-#include "../../eclipse/rfsw_0.1/packet.h"
+#include "packet.h"
 #include "boxstates.h"
 #include "boxstatesview.h"
 

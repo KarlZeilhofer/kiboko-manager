@@ -14,7 +14,7 @@
 #include "formtimestamplist.h"
 #include "dialogbindboatbox.h"
 #include "assignmentmanager.h"
-#include "../../eclipse/rfsw_0.1/packet.h"
+#include "packet.h"
 #include "crc8.h"
 #include "welcomescreen.h"
 #include "maintablewidget.h"

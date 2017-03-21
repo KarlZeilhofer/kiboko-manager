@@ -3,7 +3,7 @@
 #include "competition.h"
 #include <QPainter>
 #include <QImage>
-#include "../../eclipse/rfsw_0.1/packet.h"
+#include "packet.h"
 #include "crc8.h"
 
 DisplayRenderer::DisplayRenderer(DisplayPreviewWidget *widget1, DisplayPreviewWidget *widget2,

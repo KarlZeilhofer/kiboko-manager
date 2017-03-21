@@ -5,7 +5,7 @@
 #include <QImage>
 #include <QColor>
 #include <QDebug>
-#include "../../eclipse/rfsw_0.1/packet.h"
+#include "packet.h"
 
 DisplayPreviewWidget::DisplayPreviewWidget(QWidget *parent) :
 	QLabel(parent)

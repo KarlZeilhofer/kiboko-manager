@@ -2,7 +2,7 @@
 #define DIALOGTIMESTAMPGENERATOR2_H
 
 #include <QDialog>
-#include "../../eclipse/rfsw_0.1/packet.h"
+#include "packet.h"
 
 namespace Ui {
     class DialogTimeStampGenerator2;
