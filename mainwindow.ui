@@ -745,7 +745,6 @@
     <addaction name="actionShowTimeBaseDialog"/>
     <addaction name="actionSetupPublicWidget"/>
     <addaction name="actionReadFdiskData"/>
-    <addaction name="actionUploadMidtermAssessment"/>
    </widget>
    <widget class="QMenu" name="menuSettings">
     <property name="title">
@@ -781,11 +780,18 @@
     <addaction name="actionReset_Goalbox"/>
     <addaction name="actionCrash_Kiboko_Manager"/>
    </widget>
+   <widget class="QMenu" name="menuUpload">
+    <property name="title">
+     <string>Upload</string>
+    </property>
+    <addaction name="actionUploadMidtermAssessment"/>
+   </widget>
    <addaction name="menuCompetition"/>
    <addaction name="menuConnections"/>
    <addaction name="menuSettings"/>
    <addaction name="menuHelp"/>
    <addaction name="menuDebug"/>
+   <addaction name="menuUpload"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionCreateCompetition">
